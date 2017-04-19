@@ -1,0 +1,9 @@
+<h1>#<%= @color.hex_code %></h1>
+
+<% if @color.nickname != nil %>
+  <p>Nickname: <%= @color.nickname %></p>
+<% end %>
+
+<h3>Reviews will go here.</h3>
+
+<%= link_to 'Home', colors_path %>
