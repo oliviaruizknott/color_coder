@@ -282,7 +282,7 @@ Metrics/AbcSize:
   Enabled: false
 
 Metrics/LineLength:
-  Description: 'Limit lines to 80 characters.'
-  StyleGuide: '#80-character-limits'
+  Description: 'Limit lines to 180 characters.'
+  StyleGuide: '#180-character-limits'
   Enabled: false
-  Max: 80
+  Max: 180
