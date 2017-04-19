@@ -1,6 +1,7 @@
 AllCops:
   Exclude:
     - db/schema.rb
+    - db/seeds.rb
   #DisplayCopNames: true
 
 AccessorMethodName:
