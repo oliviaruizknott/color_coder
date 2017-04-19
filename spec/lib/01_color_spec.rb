@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Color, :type => :model do
+describe Color do
   subject { described_class.new }
 
   it "is valid with valid attributes" do
