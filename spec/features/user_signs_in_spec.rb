@@ -1,20 +1,11 @@
 require 'rails_helper'
+require_relative '../factories/user_factory'
 
 feature 'user signs in', %{
   As a user
   I want to sign in
   So that I can see my colors and reviews
 } do
-
-  FactoryGirl.define do
-    factory :user do
-      sequence(:email) { |n| "person#{n}@example.com" }
-      first_name 'John'
-      last_name 'Smith'
-      password 'password'
-      password_confirmation 'password'
-    end
-  end
 
   scenario 'an existing user specifies a valid email and password' do
     user = FactoryGirl.create(:user)
