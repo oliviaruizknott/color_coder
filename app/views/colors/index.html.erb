@@ -1,5 +1,9 @@
 <h1>COLORS!!!!</h1>
 
+<% if user_signed_in? %>
+  <p><%= link_to "Add a new color", new_color_path %></p>
+<% end %>
+
 <% @colors.each do |color| %>
   <p><%= link_to "##{color.hex_code}", color %>, "<%= color.nickname %>"</p>
 <% end %>
