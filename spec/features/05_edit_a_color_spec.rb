@@ -3,7 +3,7 @@ require "rails_helper"
 feature "visitors can edit a color" do
   scenario "from a link on the color show page if logged in" do
     george = User.create(first_name: "George", last_name: "Li", email: "george53@bu.edu", password: "hahacows")
-    color = Color.create(hex_code: "5b756c", nickname: "Aqua Smoke", user: george)
+    Color.create(hex_code: "5b756c", nickname: "Aqua Smoke", user: george)
 
     visit root_path
     click_link "Login"
@@ -20,7 +20,7 @@ feature "visitors can edit a color" do
 
   scenario "and successfully update the database and be redirected to the show page" do
     george = User.create(first_name: "George", last_name: "Li", email: "george53@bu.edu", password: "hahacows")
-    color = Color.create(hex_code: "5b756c", nickname: "Aqua Smoke", user: george)
+    Color.create(hex_code: "5b756c", nickname: "Aqua Smoke", user: george)
 
     visit root_path
     click_link "Login"
