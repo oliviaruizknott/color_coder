@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
       @review.errors.full_messages.each do |m|
         flash[:alert] += m
       end
-        redirect_to color_path(@color)
+      redirect_to color_path(@color)
     end
   end
 
