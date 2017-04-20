@@ -8,9 +8,9 @@
 
 george = User.create!(first_name: "George", last_name: "Li", email: "george53@bu.edu", password: "hahacows")
 
-Color.create!(hex_code: "5b756c", nickname: "Aqua Smoke", user: george)
-Color.create!(hex_code: "CCAC95", nickname: "Pale", user: george)
-Color.create!(hex_code: "9D7E79", nickname: "distance between", user: george)
+Color.create!(hex_code: "#5b756c", nickname: "Aqua Smoke", user: george)
+Color.create!(hex_code: "#CCAC95", nickname: "Pale", user: george)
+Color.create!(hex_code: "#9D7E79", nickname: "distance between", user: george)
 
 color = Color.first
 Review.create!(rating: 2, body: "Boo, this colour is too drab for my standards", color: color, user: george)

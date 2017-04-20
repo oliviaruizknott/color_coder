@@ -34,11 +34,11 @@ feature "visitors can add a new color" do
     click_link "Add a new color"
 
     expect(page).to have_content "New Color"
-    fill_in 'Hex Code', with: "FFFFFF"
+    fill_in 'Hex Code', with: "#FFFFFF"
     fill_in 'Nickname', with: "Black"
     click_button "Add Color"
     expect(page).to have_content "Color added successfully"
-    expect(page).to have_content "FFFFFF"
+    expect(page).to have_content "#FFFFFF"
     expect(page).to have_content "Black"
   end
 
@@ -55,15 +55,15 @@ feature "visitors can add a new color" do
     click_link "Add a new color"
 
     expect(page).to have_content "New Color"
-    fill_in 'Hex Code', with: "FFFFFF"
+    fill_in 'Hex Code', with: "#FFFFFF"
     click_button "Add Color"
     expect(page).to have_content "Color added successfully"
-    expect(page).to have_content "FFFFFF"
+    expect(page).to have_content "#FFFFFF"
   end
 
   scenario "but are not able to enter a color already in the database" do
     george = User.create(first_name: "George", last_name: "Li", email: "george53@bu.edu", password: "hahacows")
-    Color.create(hex_code: "5b756c", nickname: "Aqua Smoke", user: george)
+    Color.create(hex_code: "#5b756c", nickname: "Aqua Smoke", user: george)
 
     visit root_path
     click_link "Login"
@@ -75,7 +75,7 @@ feature "visitors can add a new color" do
     click_link "Add a new color"
 
     expect(page).to have_content "New Color"
-    fill_in 'Hex Code', with: "5b756c"
+    fill_in 'Hex Code', with: "#5b756c"
     click_button "Add Color"
     expect(page).to have_content "Hex code has already been taken"
   end
@@ -102,7 +102,3 @@ feature "visitors can add a new color" do
     expect(page).to_not have_content "Add a new color"
   end
 end
-
-# george = User.create(first_name: "George", last_name: "Li", email: "george53@bu.edu", password: "hahacows")
-#
-# Color.create(hex_code: "5b756c", nickname: "Aqua Smoke", user: george)
