@@ -8,7 +8,7 @@ feature 'user can post review', %{
 
   scenario "from the color show page" do
     george = User.create(first_name: "George", last_name: "Li", email: "george53@bu.edu", password: "hahacows")
-    color = Color.create(hex_code: "5b756c", nickname: "Aqua Smoke", user: george)
+    color = Color.create(hex_code: "#5b756c", nickname: "Aqua Smoke", user: george)
 
     visit root_path
     click_link 'Sign In'
@@ -27,7 +27,7 @@ feature 'user can post review', %{
 
   scenario "Rating is not selected and review is not saved" do
     george = User.create(first_name: "George", last_name: "Li", email: "george53@bu.edu", password: "hahacows")
-    color = Color.create(hex_code: "5b756c", nickname: "Aqua Smoke", user: george)
+    color = Color.create(hex_code: "#5b756c", nickname: "Aqua Smoke", user: george)
 
     visit root_path
     click_link color.hex_code
@@ -40,7 +40,7 @@ feature 'user can post review', %{
 
   scenario "Review is not provided and review is not saved" do
     george = User.create(first_name: "George", last_name: "Li", email: "george53@bu.edu", password: "hahacows")
-    color = Color.create(hex_code: "5b756c", nickname: "Aqua Smoke", user: george)
+    color = Color.create(hex_code: "#5b756c", nickname: "Aqua Smoke", user: george)
 
     visit root_path
     click_link color.hex_code

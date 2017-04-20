@@ -5,11 +5,11 @@ feature "visitors can add a new color" do
     User.create(first_name: "George", last_name: "Li", email: "george53@bu.edu", password: "hahacows")
 
     visit root_path
-    click_link "Login"
+    click_link "Sign In"
 
     fill_in 'Email', with: "george53@bu.edu"
     fill_in 'Password', with: "hahacows"
-    click_button "Log in"
+    click_button "Log In"
 
     click_link "Add a new color"
     expect(page).to have_content "New Color"
@@ -25,11 +25,11 @@ feature "visitors can add a new color" do
     User.create(first_name: "George", last_name: "Li", email: "george53@bu.edu", password: "hahacows")
 
     visit root_path
-    click_link "Login"
+    click_link "Sign In"
 
     fill_in 'Email', with: "george53@bu.edu"
     fill_in 'Password', with: "hahacows"
-    click_button "Log in"
+    click_button "Log In"
 
     click_link "Add a new color"
 
@@ -46,11 +46,11 @@ feature "visitors can add a new color" do
     User.create(first_name: "George", last_name: "Li", email: "george53@bu.edu", password: "hahacows")
 
     visit root_path
-    click_link "Login"
+    click_link "Sign In"
 
     fill_in 'Email', with: "george53@bu.edu"
     fill_in 'Password', with: "hahacows"
-    click_button "Log in"
+    click_button "Log In"
 
     click_link "Add a new color"
 
@@ -66,11 +66,11 @@ feature "visitors can add a new color" do
     Color.create(hex_code: "#5b756c", nickname: "Aqua Smoke", user: george)
 
     visit root_path
-    click_link "Login"
+    click_link "Sign In"
 
     fill_in 'Email', with: "george53@bu.edu"
     fill_in 'Password', with: "hahacows"
-    click_button "Log in"
+    click_button "Log In"
 
     click_link "Add a new color"
 
@@ -84,11 +84,11 @@ feature "visitors can add a new color" do
     User.create(first_name: "George", last_name: "Li", email: "george53@bu.edu", password: "hahacows")
 
     visit root_path
-    click_link "Login"
+    click_link "Sign In"
 
     fill_in 'Email', with: "george53@bu.edu"
     fill_in 'Password', with: "hahacows"
-    click_button "Log in"
+    click_button "Log In"
 
     click_link "Add a new color"
 
