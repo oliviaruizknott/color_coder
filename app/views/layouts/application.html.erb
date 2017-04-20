@@ -9,9 +9,9 @@
   </head>
 
   <body>
-    <% flash.each do |key, value| %>
-      <div class="callout <%= key %>">
-        <%= value %>
+    <% flash.each do |type, message| %>
+      <div>
+        <%= message %>
       </div>
     <% end %>
 
