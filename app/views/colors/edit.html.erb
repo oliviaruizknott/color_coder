@@ -1,0 +1,16 @@
+<h1>Edit Color</h1>
+
+<h3><%= @color.hex_code %></h3>
+
+<%= form_for(@color) do |f| %>
+  <div class="field">
+    <%= f.label :nickname %><br />
+    <%= f.text_field :nickname %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update Color"%>
+  </div>
+<% end %>
+
+<%= link_to 'Home', colors_path %>
