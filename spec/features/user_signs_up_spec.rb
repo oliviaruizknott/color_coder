@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'sign up', %Q{
+feature 'sign up', %{
   As an unauthenticated user
   I want to sign up
   So I can have my own profile
