@@ -24,11 +24,9 @@ class ColorsController < ApplicationController
     end
   end
 
-
   private
 
   def color_params
     params.require(:color).permit(:hex_code, :nickname)
   end
-
 end

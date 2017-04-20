@@ -2,7 +2,7 @@ require "rails_helper"
 
 feature "visitors can add a new color" do
   scenario "from a link on the root path if they are logged in" do
-    george = User.create(first_name: "George", last_name: "Li", email: "george53@bu.edu", password: "hahacows")
+    User.create(first_name: "George", last_name: "Li", email: "george53@bu.edu", password: "hahacows")
 
     visit root_path
     click_link "Login"
@@ -10,7 +10,7 @@ feature "visitors can add a new color" do
     fill_in 'Email', with: "george53@bu.edu"
     fill_in 'Password', with: "hahacows"
     click_button "Log in"
-    
+
     click_link "Add a new color"
     expect(page).to have_content "New Color"
   end
@@ -22,7 +22,7 @@ feature "visitors can add a new color" do
   end
 
   scenario "successfully with nickname" do
-    george = User.create(first_name: "George", last_name: "Li", email: "george53@bu.edu", password: "hahacows")
+    User.create(first_name: "George", last_name: "Li", email: "george53@bu.edu", password: "hahacows")
 
     visit root_path
     click_link "Login"
@@ -43,7 +43,7 @@ feature "visitors can add a new color" do
   end
 
   scenario "successfully without nickname" do
-    george = User.create(first_name: "George", last_name: "Li", email: "george53@bu.edu", password: "hahacows")
+    User.create(first_name: "George", last_name: "Li", email: "george53@bu.edu", password: "hahacows")
 
     visit root_path
     click_link "Login"
@@ -63,7 +63,7 @@ feature "visitors can add a new color" do
 
   scenario "but are not able to enter a color already in the database" do
     george = User.create(first_name: "George", last_name: "Li", email: "george53@bu.edu", password: "hahacows")
-    color = Color.create(hex_code: "5b756c", nickname: "Aqua Smoke", user: george)
+    Color.create(hex_code: "5b756c", nickname: "Aqua Smoke", user: george)
 
     visit root_path
     click_link "Login"
@@ -81,7 +81,7 @@ feature "visitors can add a new color" do
   end
 
   scenario "but are not able to leave the hex code blank" do
-    george = User.create(first_name: "George", last_name: "Li", email: "george53@bu.edu", password: "hahacows")
+    User.create(first_name: "George", last_name: "Li", email: "george53@bu.edu", password: "hahacows")
 
     visit root_path
     click_link "Login"
