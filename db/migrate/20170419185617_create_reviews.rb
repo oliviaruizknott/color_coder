@@ -4,6 +4,7 @@ class CreateReviews < ActiveRecord::Migration[5.0]
       t.integer :rating, null: false
       t.text :body, null: false
 
+      t.belongs_to :user
       t.belongs_to :color
       t.timestamps
     end

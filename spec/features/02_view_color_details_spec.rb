@@ -2,7 +2,8 @@ require "rails_helper"
 
 feature "visitors can view color details" do
   scenario "from the color show page" do
-    color = Color.create(hex_code: "5b756c", nickname: "Aqua Smoke")
+    george = User.create(first_name: "George", last_name: "Li", email: "george53@bu.edu", password: "hahacows")
+    color = Color.create(hex_code: "5b756c", nickname: "Aqua Smoke", user: george)
 
     visit color_path(color)
     expect(page).to have_content "5b756c"
@@ -11,7 +12,8 @@ feature "visitors can view color details" do
   end
 
   scenario "by clicking color link on the index page" do
-    Color.create(hex_code: "5b756c", nickname: "Aqua Smoke")
+    george = User.create(first_name: "George", last_name: "Li", email: "george53@bu.edu", password: "hahacows")
+    Color.create(hex_code: "5b756c", nickname: "Aqua Smoke", user: george)
 
     visit colors_path
     click_link "#5b756c"
@@ -22,7 +24,8 @@ feature "visitors can view color details" do
   end
 
   scenario "and can get back to index page" do
-    color = Color.create(hex_code: "5b756c", nickname: "Aqua Smoke")
+    george = User.create(first_name: "George", last_name: "Li", email: "george53@bu.edu", password: "hahacows")
+    color = Color.create(hex_code: "5b756c", nickname: "Aqua Smoke", user: george)
 
     visit color_path(color)
     click_link "Home"

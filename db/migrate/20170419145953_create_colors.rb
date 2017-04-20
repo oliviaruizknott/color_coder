@@ -4,6 +4,7 @@ class CreateColors < ActiveRecord::Migration[5.0]
       t.string :hex_code, null: false
       t.string :nickname
 
+      t.belongs_to :user
       t.timestamps
     end
   end
