@@ -5,7 +5,7 @@ describe Color do
   george = User.create(first_name: "George", last_name: "Li", email: "george53@bu.edu", password: "hahacows")
 
   it "is valid with valid attributes" do
-    subject.hex_code = "FFFFFF"
+    subject.hex_code = "#FFFFFF"
     subject.user = george
     expect(subject).to be_valid
   end
@@ -22,7 +22,7 @@ describe Color do
   end
 
   it "is valid with nickname" do
-    subject.hex_code = "FFFFFF"
+    subject.hex_code = "#FFFFFF"
     subject.nickname = "Pale"
     subject.user = george
     expect(subject).to be_valid
