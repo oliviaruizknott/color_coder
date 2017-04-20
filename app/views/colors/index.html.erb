@@ -5,5 +5,5 @@
 <% end %>
 
 <% @colors.each do |color| %>
-  <p><%= link_to "##{color.hex_code}", color %>, "<%= color.nickname %>"</p>
+  <p><%= link_to color.hex_code, color %>, "<%= color.nickname %>"</p>
 <% end %>

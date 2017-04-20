@@ -12,7 +12,7 @@ class ColorsController < ApplicationController
   end
 
   def create
-    @color = Color.new(color_params)
+    @color = Color.new(color_params_create)
     @color.user = current_user
 
     if @color.save
@@ -24,9 +24,29 @@ class ColorsController < ApplicationController
     end
   end
 
+  def edit
+    @color = Color.find(params[:id])
+  end
+
+  def update
+    @color = Color.find(params[:id])
+    @color.user = current_user
+    if @color.update(color_params_update)
+      flash[:success] = "Color updated successfully"
+      redirect_to color_path(@color)
+    else
+      flash[:errors] = @color.errors.full_messages.to_sentence
+      render :new
+    end
+  end
+
   private
 
-  def color_params
+  def color_params_create
     params.require(:color).permit(:hex_code, :nickname)
+  end
+
+  def color_params_update
+    params.require(:color).permit(:nickname)
   end
 end
