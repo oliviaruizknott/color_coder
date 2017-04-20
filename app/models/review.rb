@@ -6,7 +6,7 @@ class Review < ApplicationRecord
     [3, "3"],
     [4, "4"],
     [5, "5"]
-  ]
+  ].freeze
 
   validates :rating, inclusion: { in: 1..5, message: " must be between 1 - 5" }
   validates :body, presence: true

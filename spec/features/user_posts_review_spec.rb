@@ -41,7 +41,7 @@ feature 'user can post review', %{
   scenario "Review is not provided and review is not saved" do
     george = User.create(first_name: "George", last_name: "Li", email: "george53@bu.edu", password: "hahacows")
     color = Color.create(hex_code: "5b756c", nickname: "Aqua Smoke", user: george)
-    
+
     visit root_path
     click_link color.hex_code
     select(4, from: "Rating")
