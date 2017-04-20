@@ -1,0 +1,15 @@
+<h1>#<%= @color.hex_code %></h1>
+
+<% if @color.nickname != nil %>
+  <p>Nickname: <%= @color.nickname %></p>
+<% end %>
+
+<h3>Reviews will go here.</h3>
+<% @color.reviews.each do |review| %>
+  <p>Rating: <%= review.rating %></p>
+  <p>Review: <%= review.body %></p>
+  <p><%= review.created_at.strftime("%B %d, %Y") %></p>
+  <hr/>
+<% end %>
+
+<%= link_to 'Home', colors_path %>
