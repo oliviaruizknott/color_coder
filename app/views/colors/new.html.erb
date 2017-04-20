@@ -1,0 +1,24 @@
+<h1>New Color</h1>
+
+
+
+<%= form_for(@color) do |f| %>
+
+  <div class="field">
+    <%= f.label :hex_code, "Hex Code" %><br />
+    <%= f.text_field :hex_code, pattern: "^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nickname %><br />
+    <%= f.text_field :nickname %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Add Color"%>
+  </div>
+<% end %>
+
+
+
+<%= link_to 'Home', colors_path %>
