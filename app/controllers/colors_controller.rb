@@ -5,5 +5,7 @@ class ColorsController < ApplicationController
 
   def show
     @color = Color.find(params[:id])
+    @review = Review.new
+    @review_ratings = Review::RATINGS
   end
 end

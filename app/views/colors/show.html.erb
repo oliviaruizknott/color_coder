@@ -4,6 +4,36 @@
   <p>Nickname: <%= @color.nickname %></p>
 <% end %>
 
+<%= form_for [ @color, @review ] do |f| %>
+<!--
+  <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h3>
+      <ul>
+        <% @review.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %> -->
+
+  <div class="field">
+    <%= f.label :rating %>
+    <%= f.select :rating, @review_ratings %>
+  </div>
+
+  <div class="field">
+    <%= f.label :body, "Review" %>
+    <%= f.text_area :body %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit value="Submit Review" %>
+  </div>
+
+<% end %>
+
+
 <h3>Reviews will go here.</h3>
 <% @color.reviews.each do |review| %>
   <p>Rating: <%= review.rating %></p>
