@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 george = User.create!(first_name: "George", last_name: "Li", email: "george53@bu.edu", password: "hahacows")
 
 Color.create!(hex_code: "5b756c", nickname: "Aqua Smoke", user: george)
