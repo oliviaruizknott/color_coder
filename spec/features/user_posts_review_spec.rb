@@ -30,6 +30,12 @@ feature 'user can post review', %{
     color = Color.create(hex_code: "#5b756c", nickname: "Aqua Smoke", user: george)
 
     visit root_path
+    click_link 'Sign In'
+    fill_in 'Email', with: george.email
+    fill_in 'Password', with: george.password
+    click_button 'Log In'
+    expect(page).to have_content('Welcome Back!')
+
     click_link color.hex_code
     fill_in "Review", with: "This is great!"
     click_button "Submit Review"
@@ -43,6 +49,12 @@ feature 'user can post review', %{
     color = Color.create(hex_code: "#5b756c", nickname: "Aqua Smoke", user: george)
 
     visit root_path
+    click_link 'Sign In'
+    fill_in 'Email', with: george.email
+    fill_in 'Password', with: george.password
+    click_button 'Log In'
+    expect(page).to have_content('Welcome Back!')
+
     click_link color.hex_code
     select(4, from: "Rating")
     click_button "Submit Review"

@@ -1,4 +1,4 @@
-<h1>#<%= @color.hex_code %></h1>
+<h1><%= @color.hex_code %></h1>
 
 <% if user_signed_in? %>
   <%= link_to 'Edit Color', edit_color_path(@color) %>
@@ -8,21 +8,23 @@
   <p>Nickname: <%= @color.nickname %></p>
 <% end %>
 
-<%= form_for [ @color, @review ] do |f| %>
-  <div class="field">
-    <%= f.label :rating %>
-    <%= f.select :rating, @review_ratings %>
-  </div>
+<% if user_signed_in? %>
+  <%= form_for [ @color, @review ] do |f| %>
+    <div class="field">
+      <%= f.label :rating %>
+      <%= f.select :rating, @review_ratings %>
+    </div>
 
-  <div class="field">
-    <%= f.label :body, "Review" %>
-    <%= f.text_area :body %>
-  </div>
+    <div class="field">
+      <%= f.label :body, "Review" %>
+      <%= f.text_area :body %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit value="Submit Review" %>
-  </div>
+    <div class="actions">
+      <%= f.submit value="Submit Review" %>
+    </div>
 
+  <% end %>
 <% end %>
 
 <h3>Reviews will go here.</h3>
