@@ -6,13 +6,13 @@ feature "visitors can edit a color" do
     Color.create(hex_code: "#5b756c", nickname: "Aqua Smoke", user: george)
 
     visit root_path
-    click_link "Login"
+    click_link "Sign In"
 
-    fill_in 'Email', with: "george53@bu.edu"
-    fill_in 'Password', with: "hahacows"
-    click_button "Log in"
+    fill_in 'Email', with: george.email
+    fill_in 'Password', with: george.password
+    click_button "Log In"
 
-    click_link "5b756c"
+    click_link "#5b756c"
     click_link "Edit Color"
 
     expect(page).to have_content "Edit Color"
@@ -23,11 +23,11 @@ feature "visitors can edit a color" do
     Color.create(hex_code: "#5b756c", nickname: "Aqua Smoke", user: george)
 
     visit root_path
-    click_link "Login"
+    click_link "Sign In"
 
     fill_in 'Email', with: "george53@bu.edu"
     fill_in 'Password', with: "hahacows"
-    click_button "Log in"
+    click_button "Log In"
 
     click_link "#5b756c"
     click_link "Edit Color"
