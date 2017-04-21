@@ -16,6 +16,37 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def new
+    @review = Review.new
+  end
+
+  def index
+    @reviews = Review.find(params[:color_id])
+  end
+
+  def edit
+    @review = Review.find(params[:id])
+    @review_ratings = Review::RATINGS
+  end
+
+  def update
+    @review = Review.find(params[:id])
+    @review_ratings = Review::RATINGS
+    if @review.update(review_params)
+      flash[:success] = "Your review is successfully saved!"
+      redirect_to color_path(@review.color)
+    else
+      flash[:errors] = @review.errors.full_messages.to_sentence
+      render :edit
+    end
+  end
+
+  def destroy
+    @color = Review.find(params[:id]).color
+    Review.find(params[:id]).destroy
+    redirect_to color_path(@color)
+  end
+
   private
 
   def review_params
