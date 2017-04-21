@@ -83,6 +83,8 @@ GEM
     execjs (2.7.0)
     factory_girl (4.8.0)
       activesupport (>= 3.0.0)
+    faker (1.7.3)
+      i18n (~> 0.5)
     ffi (1.9.18)
     foundation-rails (6.2.1.0)
       railties (>= 3.1.0)
@@ -242,6 +244,7 @@ DEPENDENCIES
   coveralls
   devise
   factory_girl
+  faker
   foundation-rails
   jbuilder (~> 2.5)
   jquery-rails
