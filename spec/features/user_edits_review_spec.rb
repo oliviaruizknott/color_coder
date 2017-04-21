@@ -5,7 +5,7 @@ feature "visitors can edit a review" do
   scenario "from a link on the color show page if logged in" do
     user = FactoryGirl.create(:user)
     color = Color.create(hex_code: "#5b766c", nickname: "equa Smoke", user_id: user.id)
-    review = Review.create(rating: 2, body: "This just makes me sad.", color: color, user_id: user.id)
+    Review.create(rating: 2, body: "This just makes me sad.", color: color, user_id: user.id)
 
     visit root_path
     click_link "Sign In"
@@ -15,8 +15,7 @@ feature "visitors can edit a review" do
     click_button "Log In"
 
     click_link "#5b766c"
-    save_and_open_page
-    click_link("Edit Review")
+    click_link "Edit Review"
     expect(page).to have_content "Edit Review"
   end
 
@@ -33,7 +32,7 @@ feature "visitors can edit a review" do
     click_button "Log In"
 
     click_link "#5b756c"
-    click_link("Edit Review")
+    click_link "Edit Review"
 
     select(4, from: "Rating")
     fill_in 'Review', with: "I have a new found respect for this colour"
