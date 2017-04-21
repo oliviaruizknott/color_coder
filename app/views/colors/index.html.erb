@@ -4,6 +4,11 @@
   <p><%= link_to "Add a new color", new_color_path %></p>
 <% end %>
 
+<% @recent_reviews.each do |color| %>
+  <p><%= color.hex_code %>, created at: <%= color.reviews.last.created_at %> </p>
+  <p>  <%= link_to 'Color Page', color %> <%= color.reviews.last.body %> </p>
+<% end %>
+
 <% @colors.each do |color| %>
   <p><%= link_to color.hex_code, color %>, "<%= color.nickname %>"</p>
 <% end %>
