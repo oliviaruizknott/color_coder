@@ -46,6 +46,11 @@ class ColorsController < ApplicationController
     end
   end
 
+  def data
+    @colors = Color.all
+    render json: @colors
+  end
+
   private
 
   def color_params_create

@@ -7,4 +7,8 @@ Rails.application.routes.draw do
   end
 
   resources :reviews, only: [:edit, :update, :destroy]
+
+  get '/api/colors', to: "colors#data"
+  get '/api/reviews', to: "reviews#data"
+  get '/api/users', to: "users#data"
 end
