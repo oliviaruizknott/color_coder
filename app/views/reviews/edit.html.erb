@@ -1,0 +1,18 @@
+<h1>Edit Review</h1>
+<%= form_for(@review) do |f| %>
+  <div class="field">
+    <%= f.label :rating %>
+    <%= f.select :rating, @review_ratings %>
+  </div>
+
+  <div class="field">
+    <%= f.label :body, "Review" %>
+    <%= f.text_area :body %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit value="Submit Review" %>
+  </div>
+
+<% end %>
+<%= link_to 'Home', colors_path %> | <%= link_to "Delete Review", @review, method: :delete %>
