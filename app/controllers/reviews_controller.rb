@@ -16,6 +16,11 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def data
+    @reviews = Review.all
+    render json: @reviews
+  end
+
   private
 
   def review_params
