@@ -16,6 +16,10 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def data
+    @reviews = Review.all
+    render json: @reviews
+
   def new
     @review = Review.new
   end
