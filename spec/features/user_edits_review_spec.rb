@@ -55,19 +55,16 @@ feature "visitors can edit a review" do
     user = FactoryGirl.create(:user)
     color = Color.create(hex_code: "#5b756c", nickname: "2", user: user)
     Review.create(rating: 2, body: "This just makes me sad.", color: color, user: user)
-    
     visit root_path
     click_link "Sign In"
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_button "Log In"
-    
     click_link "#5b756c"
     click_link "Edit Review"
     select("", from: "Rating")
     fill_in 'Review', with: "I have a new found respect for this colour"
     click_button "Submit Review"
-    
     expect(page).to have_content "Rating must be between 1 - 5"
     expect(page).to have_content "Edit Review"
     expect(page).to_not have_content "Your review is successfully saved!"
@@ -77,19 +74,16 @@ feature "visitors can edit a review" do
     user = FactoryGirl.create(:user)
     color = Color.create(hex_code: "#5b756c", nickname: "2", user: user)
     Review.create(rating: 2, body: "This just makes me sad.", color: color, user: user)
-    
     visit root_path
     click_link "Sign In"
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_button "Log In"
-    
     click_link "#5b756c"
     click_link "Edit Review"
     select(4, from: "Rating")
     fill_in 'Review', with: ""
     click_button "Submit Review"
-    
     expect(page).to have_content "Body can't be blank"
     expect(page).to have_content "Edit Review"
     expect(page).to_not have_content "Your review is successfully saved!"
