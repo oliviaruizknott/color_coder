@@ -28,13 +28,16 @@
 <% end %>
 
 <h3>Reviews will go here.</h3>
-<% i=1 %>
 <% @color.reviews.each do |review| %>
-  <p id="<%= i %>">Rating: <%= review.rating %></p>
+  <% if user_signed_in? %>
+    <% if current_user.id == review.user_id %>
+      <%= link_to "Edit Review", edit_review_path(review) %>
+    <% end %>
+  <% end %>
+  <p>Rating: <%= review.rating %></p>
   <p>Review: <%= review.body %></p>
   <p><%= review.created_at.strftime("%B %d, %Y") %></p>
   <hr/>
-  <% i += 1 %>
 <% end %>
 
 <%= link_to 'Home', colors_path %>

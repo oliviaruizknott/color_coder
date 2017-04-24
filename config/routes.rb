@@ -3,9 +3,11 @@ Rails.application.routes.draw do
 
   root "colors#index"
   resources :colors, except: [:destroy] do
-    resources :reviews, only: [:create, :edit, :update, :destroy]
+    resources :reviews, only: [:create]
   end
-
+  
+  resources :reviews, only: [:edit, :update, :destroy]
+  
   get '/api/colors', to: "colors#data"
   get '/api/reviews', to: "reviews#data"
   get '/api/users', to: "users#data"
