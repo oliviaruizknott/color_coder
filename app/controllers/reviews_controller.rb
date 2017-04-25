@@ -20,15 +20,7 @@ class ReviewsController < ApplicationController
     @reviews = Review.all
     render json: @reviews
   end
-
-  # def new
-  #   @review = Review.new
-  # end
-  #
-  # def index
-  #   @reviews = Review.find(params[:color_id])
-  # end
-
+  
   def edit
     @review = Review.find(params[:id])
     @review_ratings = Review::RATINGS
