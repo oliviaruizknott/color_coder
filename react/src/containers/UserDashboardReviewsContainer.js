@@ -12,7 +12,7 @@ class UserDashboardReviewsContainer extends Component {
 
   componentWillMount(){
     fetch('http://localhost:3000/api/reviews', {method: 'get'})
-      .then(response => response.json());
+      .then(response => response.json())
       .then(body => {
         this.setState({ reviews: body });
       });
@@ -22,7 +22,7 @@ class UserDashboardReviewsContainer extends Component {
     fetch('http://localhost:3000/api/current_user', {method: 'get'})
       .then(response => {
         response.json();
-      });
+      })
       .then(user => {
         this.setState({ currentUser: user });
       });
