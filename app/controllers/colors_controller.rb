@@ -2,10 +2,6 @@ class ColorsController < ApplicationController
   def index
     @colors = Color.all
     @users = User.all
-    @recent_reviews = []
-    Review.order('created_at DESC').limit(5).each do |review|
-      @recent_reviews << review
-    end
   end
 
   def show
@@ -57,12 +53,6 @@ class ColorsController < ApplicationController
     @colors = Color.all
     render json: @colors
   end
-
-  # def destroy_user
-  #   @user = #the user clicked on
-  #   @user.delete
-  #   redirect_to colors_path
-  # end
 
   private
 

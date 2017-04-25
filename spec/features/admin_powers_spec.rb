@@ -113,7 +113,7 @@ end
 feature "user cannot delete color" do
   scenario "from the home page" do
     jane = FactoryGirl.create(:user, first_name: "Jane")
-    color = Color.create(hex_code: "#5b756c", nickname: "Aqua Smoke", user: jane)
+    Color.create(hex_code: "#5b756c", nickname: "Aqua Smoke", user: jane)
 
     visit root_path
     click_link "Sign In"
@@ -128,7 +128,7 @@ feature "user cannot delete color" do
 
   scenario "from the color show page" do
     jane = FactoryGirl.create(:user, first_name: "Jane")
-    color = Color.create(hex_code: "#5b756c", nickname: "Aqua Smoke", user: jane)
+    Color.create(hex_code: "#5b756c", nickname: "Aqua Smoke", user: jane)
 
     visit root_path
     click_link "Sign In"
@@ -141,5 +141,5 @@ feature "user cannot delete color" do
     click_link "#5b756c"
 
     expect(page).to_not have_content "Delete Color"
-   end
+  end
 end

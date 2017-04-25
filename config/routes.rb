@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: 'users/registrations' }
-
-  # match 'users/:id' => 'users#destroy', :via => :delete # :as => :admin_destroy_user
+  devise_for :users
 
   root "colors#index"
   resources :colors do
