@@ -1,6 +1,7 @@
 class ColorsController < ApplicationController
   def index
     @colors = Color.all
+    @users = User.all
     @recent_reviews = []
     Review.order('created_at DESC').limit(5).each do |r|
       @recent_reviews << r.color

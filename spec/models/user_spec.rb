@@ -39,4 +39,27 @@ RSpec.describe User, type: :model do
     expect(subject).to_not be_valid
   end
 
+  describe "#admin?" do
+    subject { described_class.new }
+
+    it "is not an admin if the role is not admin" do
+  #    user = FactoryGirl.create(:user, role: "member")
+      subject.first_name = "George"
+      subject.last_name = "Li"
+      subject.email = "email@email.com"
+      subject.password = "hahacows"
+      subject.role = "member"
+      expect(subject.admin?).to eq(false)
+    end
+
+    it "is an admin if the role is admin" do
+  #    user = FactoryGirl.create(:user, role: "admin")
+      subject.first_name = "George"
+      subject.last_name = "Li"
+      subject.email = "email@email.com"
+      subject.password = "hahacows"
+      subject.role = "admin"
+      expect(subject.admin?).to eq(true)
+    end
+  end
 end

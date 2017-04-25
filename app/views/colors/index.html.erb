@@ -1,6 +1,14 @@
 <h1>COLORS!!!!</h1>
 <div id="app"> </div>
 
+<% if user_signed_in? && current_user.admin? %>
+  <ul>
+    <% @users.each do |user| %>
+      <li><%= user.first_name %> <%= user.last_name %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <% if user_signed_in? %>
   <p><%= link_to "Add a new color", new_color_path %></p>
 <% end %>
