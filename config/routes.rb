@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   get '/api/colors', to: "colors#data"
   get '/api/reviews', to: "reviews#data"
   get '/api/users', to: "users#data"
+  get '/api/current_user', to: "current_user#data"
 end

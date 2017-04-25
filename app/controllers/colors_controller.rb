@@ -1,7 +1,7 @@
 class ColorsController < ApplicationController
   def index
-    @colors = Color.all
     @recent_reviews = []
+    @search_colors = Color.search(params[:query])
     Review.order('created_at DESC').limit(5).each do |r|
       @recent_reviews << r.color
     end

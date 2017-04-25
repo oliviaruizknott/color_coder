@@ -1,15 +1,15 @@
-<h1>COLORS!!!!</h1>
-<div id="app"> </div>
 
 <% if user_signed_in? %>
+  <h1><%= current_user.first_name %>'s Colors</h1>
+  <% if user_signed_in? %>
   <p><%= link_to "Add a new color", new_color_path %></p>
+  <% end %>
+  <div id="app"> </div>
+  <div id="user_review"></div>
+<% else %>
+  <h1>COLORS!!!!</h1>
 <% end %>
 
-<% @recent_reviews.each do |color| %>
-  <p><%= color.hex_code %>, created at: <%= color.reviews.last.created_at %> </p>
-  <p>  <%= link_to 'Color Page', color %> <%= color.reviews.last.body %> </p>
-<% end %>
-
-<% @colors.each do |color| %>
-  <p><%= link_to color.hex_code, color %>, "<%= color.nickname %>"</p>
+<% @search_colors.each do |color| %>
+  <p><%= color.nickname %> || <%= link_to color.hex_code, color_path(color) %> </p>
 <% end %>

@@ -27,10 +27,10 @@
   <% end %>
 <% end %>
 
-<h3>Reviews will go here.</h3>
+<h3>Reviews</h3>
 <% @color.reviews.each do |review| %>
   <% if user_signed_in? %>
-    <% if current_user.id == review.user_id %>
+    <% if current_user == review.user %>
       <%= link_to "Edit Review", edit_review_path(review) %>
     <% end %>
   <% end %>
