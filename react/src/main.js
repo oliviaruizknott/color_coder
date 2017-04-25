@@ -6,16 +6,14 @@ import UserDashboardReviewsContainer from './containers/UserDashboardReviewsCont
 
 $(function() {
   ReactDOM.render(
-    <UserDashboardContainer
-    />,
+    <UserDashboardContainer />,
     document.getElementById('app')
   );
 });
 
 $(function() {
   ReactDOM.render(
-    <UserDashboardReviewsContainer
-    />,
+    <UserDashboardReviewsContainer />,
     document.getElementById('user_review')
   );
 });

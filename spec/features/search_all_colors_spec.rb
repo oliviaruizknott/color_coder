@@ -4,8 +4,8 @@ require_relative "../factories/color_factory"
 
 feature "visitors can search for a color" do
   let(:user) { FactoryGirl.create(:user) }
-  let!(:color1) {FactoryGirl.create(:color, user: user)}
-  let!(:color2) {FactoryGirl.create(:color, user: user)}
+  let!(:color1) { FactoryGirl.create(:color, user: user) }
+  let!(:color2) { FactoryGirl.create(:color, user: user) }
 
   scenario "from the index page" do
     visit root_path

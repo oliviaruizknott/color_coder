@@ -21,10 +21,10 @@ class UserDashboardReviewsContainer extends Component {
   componentDidMount(){
     fetch('http://localhost:3000/api/current_user', {method: 'get'})
       .then(response => {
-        response.json()
+        response.json();
       })
       .then(user => {
-        this.setState({ currentUser: user })
+        this.setState({ currentUser: user });
       })
   }
   render(){
@@ -34,8 +34,7 @@ class UserDashboardReviewsContainer extends Component {
           key = {review.id}
           id = {review.id}
           review = {review.body}
-          rating = {review.rating}
-        />
+          rating = {review.rating} />
       )
     }
 
