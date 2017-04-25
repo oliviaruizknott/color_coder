@@ -3,18 +3,18 @@ import UserColor from '../components/UserReview'
 
 class UserDashboardReviewsContainer extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       reviews: [],
       currentUser: []
-    }
+    };
   }
 
   componentWillMount(){
     fetch('http://localhost:3000/api/reviews', {method: 'get'})
-      .then(response => response.json())
+      .then(response => response.json());
       .then(body => {
-        this.setState({ reviews: body })
+        this.setState({ reviews: body });
       })
   }
 
