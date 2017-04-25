@@ -21,13 +21,13 @@ class ReviewsController < ApplicationController
     render json: @reviews
   end
 
-  def new
-    @review = Review.new
-  end
-
-  def index
-    @reviews = Review.find(params[:color_id])
-  end
+  # def new
+  #   @review = Review.new
+  # end
+  #
+  # def index
+  #   @reviews = Review.find(params[:color_id])
+  # end
 
   def edit
     @review = Review.find(params[:id])

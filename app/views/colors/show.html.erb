@@ -2,6 +2,9 @@
 
 <% if user_signed_in? %>
   <%= link_to 'Edit Color', edit_color_path(@color) %>
+  <% if current_user.admin? %>
+    | <%= link_to 'Delete Color', @color, method: :delete %>
+  <% end %>
 <% end %>
 
 <% if @color.nickname != nil %>

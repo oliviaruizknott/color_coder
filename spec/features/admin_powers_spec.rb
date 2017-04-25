@@ -44,3 +44,102 @@ feature "users cannot see a list of users" do
     expect(page).to_not have_content "Janet Smith"
   end
 end
+
+# feature "admins can delete a user" do
+#   scenario "from the home page" do
+#     FactoryGirl.create(:user, first_name: "Jane")
+#     admin = FactoryGirl.create(:user, role: 'admin')
+#
+#     visit root_path
+#     click_link "Sign In"
+#
+#     fill_in 'Email', with: admin.email
+#     fill_in 'Password', with: admin.password
+#     click_button "Log In"
+#
+#     expect(page).to have_content "Jane Smith"
+#     expect(page).to have_content "Delete User"
+#
+#     click_link "Delete User"
+#
+#     expect(page).to_not have_content "Jane Smith"
+#   end
+# end
+
+feature "admin can delete a color" do
+  scenario "from the home page" do
+    jane = FactoryGirl.create(:user, first_name: "Jane")
+    color = Color.create(hex_code: "#5b756c", nickname: "Aqua Smoke", user: jane)
+    admin = FactoryGirl.create(:user, role: 'admin')
+
+    visit root_path
+    click_link "Sign In"
+
+    fill_in 'Email', with: admin.email
+    fill_in 'Password', with: admin.password
+    click_button "Log In"
+
+    expect(page).to have_content "#5b756c"
+    expect(page).to have_content "Delete Color"
+
+    click_link "Delete Color"
+
+    expect(page).to_not have_content "#5b756c"
+  end
+
+  scenario "from the color show page" do
+    jane = FactoryGirl.create(:user, first_name: "Jane")
+    color = Color.create(hex_code: "#5b756c", nickname: "Aqua Smoke", user: jane)
+    admin = FactoryGirl.create(:user, role: 'admin')
+
+    visit root_path
+    click_link "Sign In"
+
+    fill_in 'Email', with: admin.email
+    fill_in 'Password', with: admin.password
+    click_button "Log In"
+
+    expect(page).to have_content "#5b756c"
+    click_link "#5b756c"
+
+    expect(page).to have_content "Delete Color"
+
+    click_link "Delete Color"
+
+    expect(page).to_not have_content "#5b756c"
+   end
+end
+
+feature "user cannot delete color" do
+  scenario "from the home page" do
+    jane = FactoryGirl.create(:user, first_name: "Jane")
+    color = Color.create(hex_code: "#5b756c", nickname: "Aqua Smoke", user: jane)
+
+    visit root_path
+    click_link "Sign In"
+
+    fill_in 'Email', with: jane.email
+    fill_in 'Password', with: jane.password
+    click_button "Log In"
+
+    expect(page).to have_content "#5b756c"
+    expect(page).to_not have_content "Delete Color"
+  end
+
+  scenario "from the color show page" do
+    jane = FactoryGirl.create(:user, first_name: "Jane")
+    color = Color.create(hex_code: "#5b756c", nickname: "Aqua Smoke", user: jane)
+
+    visit root_path
+    click_link "Sign In"
+
+    fill_in 'Email', with: jane.email
+    fill_in 'Password', with: jane.password
+    click_button "Log In"
+
+    expect(page).to have_content "#5b756c"
+    click_link "#5b756c"
+
+    expect(page).to_not have_content "Delete Color"
+   end
+end

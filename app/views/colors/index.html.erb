@@ -1,23 +1,33 @@
 <h1>COLORS!!!!</h1>
-<div id="app"> </div>
 
 <% if user_signed_in? && current_user.admin? %>
+  <h3>All Users</h3>
   <ul>
     <% @users.each do |user| %>
-      <li><%= user.first_name %> <%= user.last_name %></li>
+      <li>
+        <%= user.first_name %> <%= user.last_name %>
+      </li>
     <% end %>
   </ul>
 <% end %>
+
+<hr />
+
+<h3>User Dashboard</h3>
+<div id="app"> </div>
+
+<hr />
 
 <% if user_signed_in? %>
   <p><%= link_to "Add a new color", new_color_path %></p>
 <% end %>
 
-<% @recent_reviews.each do |color| %>
-  <p><%= color.hex_code %>, created at: <%= color.reviews.last.created_at %> </p>
-  <p>  <%= link_to 'Color Page', color %> <%= color.reviews.last.body %> </p>
-<% end %>
-
+<h3>All Colors</h3>
 <% @colors.each do |color| %>
-  <p><%= link_to color.hex_code, color %>, "<%= color.nickname %>"</p>
+  <p>
+    <%= link_to color.hex_code, color %>, "<%= color.nickname %>"
+    <% if user_signed_in? && current_user.admin? %>
+      | <%= link_to 'Delete Color', color, method: :delete %>
+    <% end %>
+  </p>
 <% end %>
