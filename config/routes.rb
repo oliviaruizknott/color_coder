@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  resources :users, only: [:index]
+
   root "colors#index"
-  resources :colors, except: [:destroy] do
+  resources :colors do
     resources :reviews, only: [:create]
   end
 

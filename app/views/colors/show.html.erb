@@ -2,6 +2,12 @@
 
 <% if user_signed_in? %>
   <%= link_to 'Edit Color', edit_color_path(@color) %>
+  <% if current_user.id == review.user_id && current_user.admin? %>
+    |
+  <% end %>
+  <% if current_user.admin? %>
+   <%= link_to 'Delete Color', @color, method: :delete %>
+  <% end %>
 <% end %>
 
 <% if @color.nickname != nil %>
@@ -32,6 +38,12 @@
   <% if user_signed_in? %>
     <% if current_user.id == review.user_id %>
       <%= link_to "Edit Review", edit_review_path(review) %>
+    <% end %>
+    <% if current_user.id == review.user_id && current_user.admin? %>
+      |
+    <% end %>
+    <% if current_user.admin? %>
+      <%= link_to "Delete Review", review, method: :delete %>
     <% end %>
   <% end %>
   <p>Rating: <%= review.rating %></p>
