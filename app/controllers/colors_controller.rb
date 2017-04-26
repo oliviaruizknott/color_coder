@@ -1,10 +1,7 @@
 class ColorsController < ApplicationController
   def index
     @colors = Color.all
-    @recent_reviews = []
-    Review.order('created_at DESC').limit(5).each do |r|
-      @recent_reviews << r.color
-    end
+    @users = User.all
   end
 
   def show
@@ -44,6 +41,12 @@ class ColorsController < ApplicationController
       flash[:errors] = @color.errors.full_messages.to_sentence
       render :new
     end
+  end
+
+  def destroy
+    @color = Color.find(params[:id])
+    @color.destroy
+    redirect_to colors_path
   end
 
   def data

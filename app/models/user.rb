@@ -7,6 +7,10 @@ class User < ApplicationRecord
   has_many :colors
   has_many :reviews
 
+  def admin?
+    role == "admin"
+  end
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 end
