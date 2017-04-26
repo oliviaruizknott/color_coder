@@ -1,4 +1,7 @@
 require 'rails_helper'
+require_relative "../factories/user_factory"
+require_relative "../factories/color_factory"
+require_relative "../factories/review_factory"
 
 feature 'sign up', %{
   As an unauthenticated user
@@ -7,6 +10,9 @@ feature 'sign up', %{
 } do
 
   scenario 'specifying valid and required info' do
+    user = FactoryGirl.create(:user)
+    color = FactoryGirl.create(:color, user: user)
+    review = FactoryGirl.create(:review, user: user, color: color)
 
     visit new_user_registration_path
     fill_in 'First Name', with: "Jon"
@@ -21,6 +27,10 @@ feature 'sign up', %{
   end
 
   scenario 'required info is not supplied' do
+    user = FactoryGirl.create(:user)
+    color = FactoryGirl.create(:color, user: user)
+    review = FactoryGirl.create(:review, user: user, color: color)
+
     visit new_user_registration_path
     click_button 'Sign Up'
 
@@ -29,6 +39,10 @@ feature 'sign up', %{
   end
 
   scenario 'password confirmation does not match confirmation' do
+    user = FactoryGirl.create(:user)
+    color = FactoryGirl.create(:color, user: user)
+    review = FactoryGirl.create(:review, user: user, color: color)
+    
     visit new_user_registration_path
     fill_in 'First Name', with: "Jon"
     fill_in 'Last Name', with: "Smith"

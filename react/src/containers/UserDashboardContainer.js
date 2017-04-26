@@ -5,8 +5,28 @@ class UserDashboardContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      colors: []
+      colors: [],
+      currentUser: [],
+      currentUserColors: []
     }
+    this.onProfileClick=this.onProfileClick.bind(this)
+  }
+
+  onProfileClick(){
+    fetch('http://localhost:3000/api/current_user', {method: 'get'})
+      .then(response => {
+        response.json();
+      })
+      .then(user => {
+        this.setState({ currentUser: user });
+      });
+      let currentUserColorsArray = []
+      this.state.colors.map (color => {
+        if (this.state.currentUser == color.user) {
+          currentUserColorsArray.push(color)
+        }
+      })
+      this.setState({ currentUserColors: currentUserColorsArray })
   }
 
   componentDidMount(){
@@ -17,7 +37,7 @@ class UserDashboardContainer extends Component {
       })
   }
   render(){
-    let all_the_colors = this.state.colors.map (color => {
+    let all_the_colors = this.state.currentUserColors.map (color => {
       return(
         <UserColor
           key = {color.id}
@@ -31,6 +51,7 @@ class UserDashboardContainer extends Component {
     )
     return(
       <div>
+        <input type="button" onClick={this.onProfileClick}></input>
         {all_the_colors}
       </div>
     )
