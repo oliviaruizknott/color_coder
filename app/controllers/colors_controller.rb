@@ -1,14 +1,13 @@
 class ColorsController < ApplicationController
   def index
-    @recent_reviews = []
-    @search_colors = Color.search(params[:query])
-    Review.order('created_at DESC').limit(5).each do |r|
-      @recent_reviews << r.color
-    end
-
+    @search_colors = Color.search(params[:query]).order('created_at DESC')
     @rand_color = @search_colors.sample
     @text_color = text_color(@rand_color.hex_code)
-    # @user_colors = Color.find_by(user: current_user)
+    if user_signed_in?
+      @recent_reviews = current_user.reviews.order('created_at DESC').limit(5)
+    else
+      @recent_reviews = []
+    end
   end
 
   def show

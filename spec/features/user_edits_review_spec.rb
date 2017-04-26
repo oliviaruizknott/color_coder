@@ -16,7 +16,7 @@ feature "visitors can edit a review" do
     fill_in 'Password', with: user.password
     click_button "Log In"
 
-    click_link color.hex_code
+    first(:link, color.hex_code).click
     click_on "Edit Review"
     expect(page).to have_content "Edit Review"
   end
@@ -29,7 +29,7 @@ feature "visitors can edit a review" do
     fill_in 'Password', with: user.password
     click_button "Log In"
 
-    click_link color.hex_code
+    first(:link, color.hex_code).click
     click_link "Edit Review"
 
     select(4, from: "Rating")
@@ -52,7 +52,7 @@ feature "visitors can edit a review" do
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_button "Log In"
-    click_link color.hex_code
+    first(:link, color.hex_code).click
     click_link "Edit Review"
     select("", from: "Rating")
     fill_in 'Review', with: "I have a new found respect for this colour"
@@ -68,7 +68,7 @@ feature "visitors can edit a review" do
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_button "Log In"
-    click_link color.hex_code
+    first(:link, color.hex_code).click
     click_link "Edit Review"
     select(4, from: "Rating")
     fill_in 'Review', with: ""

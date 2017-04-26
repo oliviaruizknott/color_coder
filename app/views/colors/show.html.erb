@@ -6,9 +6,10 @@
 <% end %>
 
 <% if user_signed_in? %>
-  <%= link_to 'Edit Color', edit_color_path(@color) %>
+  <% if current_user == @color.user %>
+    <%= link_to 'Edit Color', edit_color_path(@color) %>
+  <% end %>
 <% end %>
-
 
 <% if user_signed_in? %>
   <%= form_for [ @color, @review ] do |f| %>

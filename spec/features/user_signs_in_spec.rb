@@ -1,5 +1,9 @@
 require 'rails_helper'
-require_relative '../factories/user_factory'
+require_relative "../factories/user_factory"
+require_relative "../factories/color_factory"
+require_relative "../factories/review_factory"
+
+
 
 feature 'user signs in', %{
   As a user
@@ -9,16 +13,24 @@ feature 'user signs in', %{
 
   scenario 'an existing user specifies a valid email and password' do
     user = FactoryGirl.create(:user)
+    color = FactoryGirl.create(:color, user: user)
+    review = FactoryGirl.create(:review, user: user, color: color)
+
     visit root_path
     click_link 'Sign In'
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
+
     click_button 'Log In'
     expect(page).to have_content('Welcome Back!')
     expect(page).to have_content('Logout')
   end
 
   scenario 'a nonexistent email and password is supplied' do
+    user = FactoryGirl.create(:user)
+    color = FactoryGirl.create(:color, user: user)
+    review = FactoryGirl.create(:review, user: user, color: color)
+
     visit root_path
     click_link 'Sign In'
     fill_in 'Email', with: 'nobody@example.com'
@@ -32,6 +44,9 @@ feature 'user signs in', %{
 
   scenario 'an existing email with the wrong password is denied access' do
     user = FactoryGirl.create(:user)
+    color = FactoryGirl.create(:color, user: user)
+    review = FactoryGirl.create(:review, user: user, color: color)
+
     visit root_path
     click_link 'Sign In'
     fill_in 'Email', with: user.email
@@ -44,6 +59,9 @@ feature 'user signs in', %{
 
   scenario 'an already authenticated user cannot re-sign in' do
     user = FactoryGirl.create(:user)
+    color = FactoryGirl.create(:color, user: user)
+    review = FactoryGirl.create(:review, user: user, color: color)
+
     visit new_user_session_path
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password

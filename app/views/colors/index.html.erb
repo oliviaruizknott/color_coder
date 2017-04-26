@@ -15,8 +15,38 @@
 <% end %>
 
   <% @search_colors.each do |color| %>
-  <div class="boxes" style="background-color:<%= color.hex_code %>;">
-    <h1><%= link_to color.hex_code, color_path(color) %></h1>
-    <p><%= color.nickname %></p>
+    <% if current_user == color.user %>
+      <div class="boxes" style="background-color:<%= color.hex_code %>;">
+        <h1><a style="color: <%= color.text_color(color.hex_code) %>;"
+     href="colors/<%= color.id %>"><%= color.hex_code %></a></h1>
+        <p><%= color.nickname %></p>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div class="subhead">
+    <h4>five recent reviews:</h4>
   </div>
+<% @recent_reviews.each do |review| %>
+  <% if current_user == review.user %>
+    <div >
+      Color: <%= review.color.hex_code%><br/>
+      Rating: <%= review.rating %><br/>
+      Review: <%= review.body %><br/>
+      <%= review.created_at.strftime("%B %d, %Y") %><br/>
+    <hr/>
+    </div>
+  <% end %>
+<% end %>
+
+
+<div class="subhead">
+  <h4>All Colors:</h4>
+</div>
+  <% @search_colors.each do |color| %>
+      <div class="boxes" style="background-color:<%= color.hex_code %>;">
+        <h1><a style="color: <%= color.text_color(color.hex_code) %>;"
+     href="colors/<%= color.id %>"><%= color.hex_code %></a></h1>
+        <p><%= color.nickname %></p>
+      </div>
   <% end %>
