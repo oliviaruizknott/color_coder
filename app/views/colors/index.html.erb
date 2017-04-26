@@ -25,12 +25,14 @@
 
 <% @search_colors.each do |color| %>
   <p><%= color.nickname %> || <%= link_to color.hex_code, color_path(color) %> </p>
+<% end %>
+
 <h3>All Colors</h3>
 <% @colors.each do |color| %>
   <p>
     <%= link_to color.hex_code, color %>, "<%= color.nickname %>"
     <% if user_signed_in? && current_user.admin? %>
       | <%= link_to 'Delete Color', color, method: :delete %>
-    <% end %>
-  </p>
+    </p>
+  <% end %>
 <% end %>
