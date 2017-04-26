@@ -22,7 +22,7 @@ feature "visitors can view color details" do
     review = FactoryGirl.create(:review, user: user, color: color)
 
     visit colors_path
-    click_link color.hex_code
+    first(:link, color.hex_code).click
 
     expect(page).to have_content color.hex_code
     expect(page).to have_content color.nickname

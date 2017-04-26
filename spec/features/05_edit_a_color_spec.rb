@@ -17,7 +17,8 @@ feature "visitors can edit a color" do
     click_button "Log In"
 
     first(:link, color.hex_code).click
-    click_link "Edit Color"
+    first(:link, "Edit Color").click
+
 
     expect(page).to have_content "Edit Color"
   end
@@ -27,6 +28,8 @@ feature "visitors can edit a color" do
     color = FactoryGirl.create(:color, user: user)
     review = FactoryGirl.create(:review, user: user, color: color)
 
+    binding.pry
+
     visit root_path
     click_link "Sign In"
 
@@ -35,7 +38,7 @@ feature "visitors can edit a color" do
     click_button "Log In"
 
     first(:link, color.hex_code).click
-    click_link "Edit Color"
+    first(:link, "Edit Color").click
 
     fill_in 'Nickname', with: color.nickname
     click_button "Update Color"
