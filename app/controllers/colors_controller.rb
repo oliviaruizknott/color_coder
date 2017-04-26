@@ -51,6 +51,12 @@ class ColorsController < ApplicationController
     end
   end
 
+  def destroy
+    @color = Color.find(params[:id])
+    @color.destroy
+    redirect_to colors_path
+  end
+
   def data
     @colors = Color.all
     render json: @colors

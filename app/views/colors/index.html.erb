@@ -1,3 +1,12 @@
+<% if user_signed_in? && current_user.admin? %>
+  <%= link_to "See All Users", users_path %>
+<% end %>
+
+<hr />
+
+<div id="app"> </div>
+
+<hr />
 
 <% if user_signed_in? %>
 <div class="username" style="background-color:<%= @rand_color.hex_code %>;color:<%= @text_color %>;">
