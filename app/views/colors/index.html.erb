@@ -51,7 +51,7 @@
 <% end %>
 
 <h3>All Colors</h3>
-  <% @colors.each do |color| %>
+<% @colors.each do |color| %>
   <p>
     <%= link_to color.hex_code, color %>, "<%= color.nickname %>"
     <% if user_signed_in? && current_user.admin? %>
@@ -63,10 +63,11 @@
 <div class="subhead">
   <h4>All Colors:</h4>
 </div>
-  <% @search_colors.each do |color| %>
-      <div class="boxes" style="background-color:<%= color.hex_code %>;">
-        <h1><a style="color: <%= color.text_color(color.hex_code) %>;"
-     href="colors/<%= color.id %>"><%= color.hex_code %></a></h1>
-        <p><%= color.nickname %></p>
-      </div>
-  <% end %>
+
+<% @search_colors.each do |color| %>
+    <div class="boxes" style="background-color:<%= color.hex_code %>;">
+      <h1><a style="color: <%= color.text_color(color.hex_code) %>;"
+   href="colors/<%= color.id %>"><%= color.hex_code %></a></h1>
+      <p><%= color.nickname %></p>
+    </div>
+<% end %>

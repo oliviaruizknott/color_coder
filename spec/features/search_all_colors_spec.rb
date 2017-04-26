@@ -12,7 +12,7 @@ feature "visitors can search for a color" do
     fill_in "Hex-Code", with: color1.hex_code
     click_button "Search"
 
-    expect(page).to have_content color1.hex_code
+    expect(page).to have_content color1.hex_codet
   end
 
   scenario "and see the results" do
