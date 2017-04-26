@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 
-class UserColor extends Component {
+class UserReview extends Component {
   constructor(props) {
     super(props)
   }
-
 
   render(){
     let divStyle = {
@@ -22,15 +21,14 @@ class UserColor extends Component {
       paddingTop: "18px",
       textTransform: "uppercase"
     };
+
     return(
-        <div style={divStyle}>
-        <a href={`/colors/${this.props.id}`}>
-            <h1 style={hexStyle}> {this.props.hex_code} </h1>
-            </a>
-            <p> {this.props.nickname} </p>
+        <div>
+            <h1> {this.props.review} </h1>
+            <p> {this.props.rating} </p>
         </div>
     )
   }
 }
 
-export default UserColor;
+export default UserReview;
