@@ -1,7 +1,8 @@
 <div class="username" style="background-color:<%= @color.hex_code %>; color:<%= @text_color %>;">
   <h1><%= @color.hex_code %></h1>
     <% if @color.nickname != nil %>
-    <h3><%= @color.nickname %></h3>
+      <h3><%= @color.nickname %></h3>
+    <% end %>
   </div>
 
 <h1><%= @color.hex_code %></h1>
@@ -34,7 +35,6 @@
     <div class="actions">
       <%= f.submit value="Submit Review" %>
     </div>
-
   <% end %>
 <% end %>
 

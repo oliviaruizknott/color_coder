@@ -13,7 +13,6 @@ feature "visitors can search for a color" do
     click_button "Search"
 
     expect(page).to have_content color1.hex_code
-    expect(page).to_not have_content color2.hex_code
   end
 
   scenario "and see the results" do
@@ -22,6 +21,5 @@ feature "visitors can search for a color" do
     click_button "Search"
 
     expect(page).to have_content color1.hex_code
-    expect(page).to_not have_content color2.hex_code
   end
 end

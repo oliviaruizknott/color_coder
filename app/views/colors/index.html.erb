@@ -8,19 +8,21 @@
 
 <div id="app"> </div>
 
+<hr />
+
 <% if user_signed_in? %>
-<div class="username" style="background-color:<%= @rand_color.hex_code %>;color:<%= @text_color %>;">
-  <h1><%= current_user.first_name %>'s Colors</h1>
-</div>
-  <% if user_signed_in? %>
-  <div class="boxes" style="background-color:#FFFFFF;">
-    <h2 id="super"><%= link_to "+", new_color_path %></h2>
+  <div class="username" style="background-color:<%= @rand_color.hex_code %>;color:<%= @text_color %>;">
+    <h1><%= current_user.first_name %>'s Colors</h1>
   </div>
+  <% if user_signed_in? %>
+    <div class="boxes" style="background-color:#FFFFFF;">
+      <h2 id="super"><%= link_to "+", new_color_path %></h2>
+    </div>
   <% end %>
 <% else %>
-<div class="username"  style="background-color:<%= @rand_color.hex_code %>;color:<%= @text_color %>;">
-  <h1>COLOR_CODER</h1>
-</div>
+  <div class="username"  style="background-color:<%= @rand_color.hex_code %>;color:<%= @text_color %>;">
+    <h1>COLOR_CODER</h1>
+  </div>
 <% end %>
 
 <% @search_colors.each do |color| %>
@@ -43,20 +45,20 @@
       Rating: <%= review.rating %><br/>
       Review: <%= review.body %><br/>
       <%= review.created_at.strftime("%B %d, %Y") %><br/>
-    <hr/>
+      <hr/>
     </div>
-  <% end %>
-  <h3>All Colors</h3>
-  <% @colors.each do |color| %>
-    <p>
-      <%= link_to color.hex_code, color %>, "<%= color.nickname %>"
-      <% if user_signed_in? && current_user.admin? %>
-        | <%= link_to 'Delete Color', color, method: :delete %>
-      <% end %>
-    </p>
   <% end %>
 <% end %>
 
+<h3>All Colors</h3>
+  <% @colors.each do |color| %>
+  <p>
+    <%= link_to color.hex_code, color %>, "<%= color.nickname %>"
+    <% if user_signed_in? && current_user.admin? %>
+      | <%= link_to 'Delete Color', color, method: :delete %>
+    <% end %>
+  </p>
+<% end %>
 
 <div class="subhead">
   <h4>All Colors:</h4>

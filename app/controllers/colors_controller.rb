@@ -8,6 +8,7 @@ class ColorsController < ApplicationController
     else
       @recent_reviews = []
     end
+
     @colors = Color.all
     @users = User.all
   end
@@ -51,6 +52,12 @@ class ColorsController < ApplicationController
       flash[:errors] = @color.errors.full_messages.to_sentence
       render :new
     end
+  end
+
+  def destroy
+    @color = Color.find(params[:id])
+    @color.destroy
+    redirect_to colors_path
   end
 
   def data

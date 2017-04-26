@@ -19,7 +19,6 @@ feature "visitors can edit a color" do
     first(:link, color.hex_code).click
     first(:link, "Edit Color").click
 
-
     expect(page).to have_content "Edit Color"
   end
 
