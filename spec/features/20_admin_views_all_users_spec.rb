@@ -91,6 +91,6 @@ feature "users cannot see a list of users" do
     fill_in 'Password', with: user.password
     click_button "Log In"
 
-    expect { visit users_path }.to raise_error
+    expect { visit users_path }.to raise_error( ActionController::RoutingError )
   end
 end

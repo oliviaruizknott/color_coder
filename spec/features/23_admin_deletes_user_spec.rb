@@ -9,10 +9,9 @@ feature "admins can delete user" do
     FactoryGirl.create(:user, first_name: "Jim")
     FactoryGirl.create(:user, first_name: "James")
     FactoryGirl.create(:user, first_name: "Janet")
-    user = FactoryGirl.create(:user)
-    color = FactoryGirl.create(:color, user: user)
-    FactoryGirl.create(:review, user: user, color: color)
     admin = FactoryGirl.create(:user, role: 'admin')
+    color = FactoryGirl.create(:color, user: admin)
+    FactoryGirl.create(:review, user: admin, color: color)
 
     visit root_path
     click_link "Sign In"
@@ -30,7 +29,7 @@ feature "admins can delete user" do
 
     expect(page).to have_content "Delete User"
     first(:link, "Delete User").click
-
+    
     expect(page).to_not have_content "Jane Smith"
   end
 end
