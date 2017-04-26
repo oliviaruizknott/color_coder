@@ -33,7 +33,6 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'foundation-rails'
 gem 'faker'
 
 group :development, :test do
@@ -45,6 +44,7 @@ group :development, :test do
   gem 'launchy'
   gem 'factory_girl'
   gem 'valid_attribute'
+  gem 'pg_search'
   gem 'shoulda-matchers', require: false
 end
 
@@ -59,6 +59,7 @@ end
 
 group :test do
   gem 'coveralls', require: false
+  gem 'database_cleaner'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
