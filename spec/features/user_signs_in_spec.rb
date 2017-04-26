@@ -3,8 +3,6 @@ require_relative "../factories/user_factory"
 require_relative "../factories/color_factory"
 require_relative "../factories/review_factory"
 
-
-
 feature 'user signs in', %{
   As a user
   I want to sign in
