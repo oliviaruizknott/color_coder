@@ -18,15 +18,6 @@ class UserDashboardReviewsContainer extends Component {
       });
   }
 
-  componentDidMount(){
-    fetch('http://localhost:3000/api/current_user', {method: 'get'})
-      .then(response => {
-        response.json();
-      })
-      .then(user => {
-        this.setState({ currentUser: user });
-      });
-  }
   render(){
     let all_the_reviews = this.state.reviews.map (review => {
       return(

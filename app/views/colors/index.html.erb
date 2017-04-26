@@ -1,15 +1,22 @@
 
 <% if user_signed_in? %>
+<div class="username" style="background-color:<%= @rand_color.hex_code %>;color:<%= @text_color %>;">
   <h1><%= current_user.first_name %>'s Colors</h1>
+</div>
   <% if user_signed_in? %>
-  <p><%= link_to "Add a new color", new_color_path %></p>
+  <div class="boxes" style="background-color:#FFFFFF;">
+    <h2 id="super"><%= link_to "+", new_color_path %></h2>
+  </div>
   <% end %>
-  <div id="app"> </div>
-  <div id="user_review"></div>
 <% else %>
-  <h1>COLORS!!!!</h1>
+<div class="username"  style="background-color:<%= @rand_color.hex_code %>;color:<%= @text_color %>;">
+  <h1>COLOR_CODER</h1>
+</div>
 <% end %>
 
-<% @search_colors.each do |color| %>
-  <p><%= color.nickname %> || <%= link_to color.hex_code, color_path(color) %> </p>
-<% end %>
+  <% @search_colors.each do |color| %>
+  <div class="boxes" style="background-color:<%= color.hex_code %>;">
+    <h1><%= link_to color.hex_code, color_path(color) %></h1>
+    <p><%= color.nickname %></p>
+  </div>
+  <% end %>
