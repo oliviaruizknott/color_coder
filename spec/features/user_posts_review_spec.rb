@@ -17,7 +17,7 @@ feature 'user can post review', %{
     click_button 'Log In'
     expect(page).to have_content('Welcome Back!')
 
-    click_link color.hex_code
+    first(:link, color.hex_code).click
 
     select(4, from: "Rating")
     fill_in "Review", with: "This is great!"
@@ -36,7 +36,7 @@ feature 'user can post review', %{
     click_button 'Log In'
     expect(page).to have_content('Welcome Back!')
 
-    click_link color.hex_code
+    first(:link, color.hex_code).click
     fill_in "Review", with: "This is great!"
     click_button "Submit Review"
 
@@ -55,7 +55,7 @@ feature 'user can post review', %{
     click_button 'Log In'
     expect(page).to have_content('Welcome Back!')
 
-    click_link color.hex_code
+    first(:link, color.hex_code).click
     select(4, from: "Rating")
     click_button "Submit Review"
 
