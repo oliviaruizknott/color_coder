@@ -17,11 +17,11 @@
   <div class="boxes" style="background-color:#FFFFFF;">
     <h2 id="super"><%= link_to "+", new_color_path %></h2>
   </div>
-  <% end %>
 <% else %>
 <div class="username"  style="background-color:<%= @rand_color.hex_code %>;color:<%= @text_color %>;">
   <h1>COLOR_CODER</h1>
 </div>
+<% end %>
 <% end %>
 
   <% @search_colors.each do |color| %>
@@ -47,6 +47,7 @@
     <hr/>
     </div>
   <% end %>
+<% end %>
 
 <h3>All Colors</h3>
 <% @colors.each do |color| %>
