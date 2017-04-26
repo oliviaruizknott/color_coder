@@ -1,5 +1,6 @@
 class ColorsController < ApplicationController
   def index
+
     @search_colors = Color.search(params[:query]).order('created_at DESC')
     @rand_color = @search_colors.sample
     @text_color = text_color(@rand_color.hex_code)
@@ -8,6 +9,7 @@ class ColorsController < ApplicationController
     else
       @recent_reviews = []
     end
+
     @colors = Color.all
     @users = User.all
   end
@@ -51,6 +53,12 @@ class ColorsController < ApplicationController
       flash[:errors] = @color.errors.full_messages.to_sentence
       render :new
     end
+  end
+
+  def destroy
+    @color = Color.find(params[:id])
+    @color.destroy
+    redirect_to colors_path
   end
 
   def data
