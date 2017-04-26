@@ -28,8 +28,6 @@ feature "visitors can edit a color" do
     color = FactoryGirl.create(:color, user: user)
     review = FactoryGirl.create(:review, user: user, color: color)
 
-    binding.pry
-
     visit root_path
     click_link "Sign In"
 
