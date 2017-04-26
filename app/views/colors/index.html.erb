@@ -1,3 +1,12 @@
+<h1>COLORS!!!!</h1>
+
+<% if user_signed_in? && current_user.admin? %>
+  <%= link_to "See All Users", users_path %>
+<% end %>
+
+<hr />
+
+<div id="app"> </div>
 
 <% if user_signed_in? %>
 <div class="username" style="background-color:<%= @rand_color.hex_code %>;color:<%= @text_color %>;">
@@ -14,19 +23,19 @@
 </div>
 <% end %>
 
-  <% @search_colors.each do |color| %>
-    <% if current_user == color.user %>
-      <div class="boxes" style="background-color:<%= color.hex_code %>;">
-        <h1><a style="color: <%= color.text_color(color.hex_code) %>;"
-     href="colors/<%= color.id %>"><%= color.hex_code %></a></h1>
-        <p><%= color.nickname %></p>
-      </div>
-    <% end %>
+<% @search_colors.each do |color| %>
+  <% if current_user == color.user %>
+    <div class="boxes" style="background-color:<%= color.hex_code %>;">
+      <h1><a style="color: <%= color.text_color(color.hex_code) %>;"
+   href="colors/<%= color.id %>"><%= color.hex_code %></a></h1>
+      <p><%= color.nickname %></p>
+    </div>
   <% end %>
+<% end %>
 
-  <div class="subhead">
-    <h4>five recent reviews:</h4>
-  </div>
+<div class="subhead">
+  <h4>five recent reviews:</h4>
+</div>
 <% @recent_reviews.each do |review| %>
   <% if current_user == review.user %>
     <div >
@@ -36,6 +45,15 @@
       <%= review.created_at.strftime("%B %d, %Y") %><br/>
     <hr/>
     </div>
+  <% end %>
+  <h3>All Colors</h3>
+  <% @colors.each do |color| %>
+    <p>
+      <%= link_to color.hex_code, color %>, "<%= color.nickname %>"
+      <% if user_signed_in? && current_user.admin? %>
+        | <%= link_to 'Delete Color', color, method: :delete %>
+      <% end %>
+    </p>
   <% end %>
 <% end %>
 

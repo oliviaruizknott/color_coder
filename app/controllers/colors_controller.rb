@@ -8,6 +8,8 @@ class ColorsController < ApplicationController
     else
       @recent_reviews = []
     end
+    @colors = Color.all
+    @users = User.all
   end
 
   def show
