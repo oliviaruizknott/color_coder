@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :users, only: [:index]
+  resources :users, only: [:index, :destroy]
 
   root "colors#index"
   resources :colors do
