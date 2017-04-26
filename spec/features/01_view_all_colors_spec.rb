@@ -1,14 +1,17 @@
 require "rails_helper"
+require_relative "../factories/user_factory"
+require_relative "../factories/color_factory"
+require_relative "../factories/review_factory"
 
 feature "visitors can view colors" do
   scenario "from the root path" do
-
-    george = User.create(first_name: "George", last_name: "Li", email: "george53@bu.edu", password: "hahacows")
-
-    Color.create(hex_code: "#5b756c", nickname: "Aqua Smoke", user: george)
+    user = FactoryGirl.create(:user)
+    color = FactoryGirl.create(:color, user: user)
+    review = FactoryGirl.create(:review, user: user, color: color)
 
     visit root_path
-    expect(page).to have_content "5b756c"
-    expect(page).to have_content "Aqua Smoke"
+
+    expect(page).to have_content color.hex_code
+    expect(page).to have_content color.nickname
   end
 end

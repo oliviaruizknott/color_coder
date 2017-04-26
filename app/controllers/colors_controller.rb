@@ -1,13 +1,23 @@
 class ColorsController < ApplicationController
   def index
+    @search_colors = Color.search(params[:query]).order('created_at DESC')
+    @rand_color = @search_colors.sample
+    @text_color = text_color(@rand_color.hex_code)
+    if user_signed_in?
+      @recent_reviews = current_user.reviews.order('created_at DESC').limit(5)
+    else
+      @recent_reviews = []
+    end
     @colors = Color.all
     @users = User.all
   end
 
   def show
     @color = Color.find(params[:id])
+    @search_colors = Color.search(params[:query])
     @review = Review.new
     @review_ratings = Review::RATINGS
+    @text_color = text_color(@color.hex_code)
   end
 
   def new
@@ -62,5 +72,21 @@ class ColorsController < ApplicationController
 
   def color_params_update
     params.require(:color).permit(:nickname)
+  end
+
+  def brightness(color_string)
+    red = ("0x"+color_string[1..2]).to_i(16)
+    green = ("0x"+color_string[3..4]).to_i(16)
+    blue = ("0x"+color_string[5..6]).to_i(16)
+    luma=(0.33*red)+(0.5*green)+(0.16*blue)
+  end
+
+  def text_color(color_string)
+    luma = brightness(color_string)
+    if (luma > 128)
+      return "#000000"
+    else
+      return "#FFFFFF"
+    end
   end
 end
