@@ -1,3 +1,15 @@
+<h1>COLORS!!!!</h1>
+
+<% if user_signed_in? && current_user.admin? %>
+  <%= link_to "See All Users", users_path %>
+<% end %>
+
+<hr />
+
+<div id="app"> </div>
+
+
+<hr />
 
 <% if user_signed_in? %>
   <h1><%= current_user.first_name %>'s Colors</h1>
@@ -10,6 +22,15 @@
   <h1>COLORS!!!!</h1>
 <% end %>
 
+
 <% @search_colors.each do |color| %>
   <p><%= color.nickname %> || <%= link_to color.hex_code, color_path(color) %> </p>
+<h3>All Colors</h3>
+<% @colors.each do |color| %>
+  <p>
+    <%= link_to color.hex_code, color %>, "<%= color.nickname %>"
+    <% if user_signed_in? && current_user.admin? %>
+      | <%= link_to 'Delete Color', color, method: :delete %>
+    <% end %>
+  </p>
 <% end %>
