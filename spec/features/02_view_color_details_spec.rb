@@ -16,6 +16,7 @@ feature "visitors can view color details" do
     Color.create(hex_code: "#5b756c", nickname: "Aqua Smoke", user: george)
 
     visit colors_path
+    save_and_open_page
     click_link "#5b756c"
 
     expect(page).to have_content "#5b756c"

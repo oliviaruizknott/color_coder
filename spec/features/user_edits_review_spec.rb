@@ -1,12 +1,14 @@
 require "rails_helper"
 require_relative "../factories/user_factory"
+require_relative "../factories/color_factory"
+require_relative "../factories/review_factory"
 
 feature "visitors can edit a review" do
-  scenario "from a link on the color show page if logged in" do
-    user = FactoryGirl.create(:user)
-    color = Color.create(hex_code: "#5b766c", nickname: "equa Smoke", user_id: user.id)
-    Review.create(rating: 2, body: "This just makes me sad.", color: color, user_id: user.id)
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:color) { FactoryGirl.create(:color, user: user) }
+  let!(:review) { FactoryGirl.create(:review, user: user, color: color) }
 
+  scenario "from a link on the color show page if logged in" do
     visit root_path
     click_link "Sign In"
 
@@ -14,16 +16,12 @@ feature "visitors can edit a review" do
     fill_in 'Password', with: user.password
     click_button "Log In"
 
-    click_link "#5b766c"
-    click_link "Edit Review"
+    click_link color.hex_code
+    click_on "Edit Review"
     expect(page).to have_content "Edit Review"
   end
 
   scenario "and successfully update the database and be redirected to the show page" do
-    user = FactoryGirl.create(:user)
-    color = Color.create(hex_code: "#5b756c", nickname: "1", user: user)
-    Review.create(rating: 2, body: "This just makes me sad.", color: color, user: user)
-
     visit root_path
     click_link "Sign In"
 
@@ -31,7 +29,7 @@ feature "visitors can edit a review" do
     fill_in 'Password', with: user.password
     click_button "Log In"
 
-    click_link "#5b756c"
+    click_link color.hex_code
     click_link "Edit Review"
 
     select(4, from: "Rating")
@@ -44,23 +42,17 @@ feature "visitors can edit a review" do
   end
 
   scenario "only if they are logged in" do
-    user = FactoryGirl.create(:user)
-    color = Color.create(hex_code: "#5b756c", nickname: "2", user: user)
-
     visit color_path(color)
     expect(page).to_not have_content "Edit Review"
   end
 
   scenario "and should be shown error message if updated review has no rating" do
-    user = FactoryGirl.create(:user)
-    color = Color.create(hex_code: "#5b756c", nickname: "2", user: user)
-    Review.create(rating: 2, body: "This just makes me sad.", color: color, user: user)
     visit root_path
     click_link "Sign In"
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_button "Log In"
-    click_link "#5b756c"
+    click_link color.hex_code
     click_link "Edit Review"
     select("", from: "Rating")
     fill_in 'Review', with: "I have a new found respect for this colour"
@@ -71,15 +63,12 @@ feature "visitors can edit a review" do
   end
 
   scenario "and should be shown error message if updated review has no body" do
-    user = FactoryGirl.create(:user)
-    color = Color.create(hex_code: "#5b756c", nickname: "2", user: user)
-    Review.create(rating: 2, body: "This just makes me sad.", color: color, user: user)
     visit root_path
     click_link "Sign In"
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_button "Log In"
-    click_link "#5b756c"
+    click_link color.hex_code
     click_link "Edit Review"
     select(4, from: "Rating")
     fill_in 'Review', with: ""
