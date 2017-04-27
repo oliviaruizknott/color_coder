@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import FlatButton from "../components/FlatButton"
+// import React, { Component } from 'react'
+// import FlatButton from "../components/FlatButton"
 
 class VotesContainer extends Component {
   constructor(props) {

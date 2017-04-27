@@ -5,12 +5,24 @@ $pontano: 'Pontano Sans', sans-serif;
 $raleway: 'Raleway', sans-serif;
 
 body {
-  font-family: 'Playfair Display', serif;
+  font-family: $ruloku;
+  font-size: 18px;
 }
+
+// a {
+//   font-family: $ruloku;
+//   font-size: 21px;
+//   text-decoration: none;
+//   :hover {
+//     color: red;
+//   }
+// }
+
+
 
 #super a {
   padding: none;
-  font-size: 136px;
+  font-size: 94px;
   color: black;
 }
 
@@ -51,10 +63,10 @@ div.boxes {
   vertical-align: top;
   font-family: $ruloku;
   letter-spacing: 1px;
+  margin-bottom: 56px;
 }
 
 div.username {
-  font-size: 35px;
   text-align: center;
   font-family: 'Raleway', sans-serif;
   text-transform: uppercase;
@@ -62,6 +74,13 @@ div.username {
   border-bottom: 1px solid black;
   border-top: 1px solid black;
   margin: 40px 0;
+  h1 {
+    font-size: 125px;
+    margin-top: 60px;
+  }
+  h3 {
+    margin-top: -60px;
+  }
 }
 
 div.subhead {
@@ -81,20 +100,75 @@ div {
   }
 }
 
-#query {
-  width: 150px;
-  height: 26px;
+  #query {
+    width: 150px;
+    height: 26px;
+  }
+
+h4 {
+  font-size: 60px;
+  text-align: center;
+  padding: 0;
+  margin: 0;
 }
 
-h3 {
-  margin-top: -20px;
-}
-
-.button {
-  width: 80px;
+.form1 {
+  width: 700px;
+  margin: auto;
+  text-align: left;
+  font-size: 20px;
+  margin-top: 10px;
+  .field1{
+    // border: 1px black solid;
+    display: inline-block;
+    select {
+      width: 50px;
+      height: 30px;
+      margin-left: 10px;
+      font-size: 18px;
+    }
+  }
+  .field2{
+    textarea {
+      font-size: 18px;
+      margin-top: 10px;
+      width: 700px;
+      height: 200px;
+    }
+    label {
+      visibility: hidden;
+    }
+  }
+  .actions {
+    input {
+      text-align: center;
+      width: 160px;
+      height: 41px;
+      border-radius: 5px;
+      background-color: #aaaaaa;
+      font-size: 18px;
+      margin: auto;
+      margin-top: -10px;
+      margin-bottom: 60px;
+      margin-left: 270px;
+    }
+  }
 }
 
 .flash {
   padding: 1em;
   background-color: #3B9089;
+}
+
+.reviews {
+  margin: auto;
+  width: 700px;
+  border-bottom: 1px black solid;
+  padding: 20px;
+  p {
+    text-align: left;
+    font-size: 24px;
+    margin-top: 0;
+    text-align: center;
+  }
 }
