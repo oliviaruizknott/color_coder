@@ -9,12 +9,8 @@ feature "visitors can edit a review" do
   let!(:review) { FactoryGirl.create(:review, user: user, color: color) }
 
   scenario "from a link on the color show page if logged in" do
+    login_as(user)
     visit root_path
-    click_link "Sign In"
-
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button "Log In"
 
     first(:link, color.hex_code).click
     click_on "Edit Review"
@@ -22,18 +18,14 @@ feature "visitors can edit a review" do
   end
 
   scenario "and successfully update the database and be redirected to the show page" do
+    login_as(user)
     visit root_path
-    click_link "Sign In"
-
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button "Log In"
 
     first(:link, color.hex_code).click
     click_link "Edit Review"
 
     select(4, from: "Rating")
-    fill_in 'Review', with: "I have a new found respect for this colour"
+    fill_in "Review", with: "I have a new found respect for this colour"
     click_button "Submit Review"
 
     expect(page).to have_content "I have a new found respect for this colour"
@@ -47,32 +39,34 @@ feature "visitors can edit a review" do
   end
 
   scenario "and should be shown error message if updated review has no rating" do
+    login_as(user)
     visit root_path
-    click_link "Sign In"
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button "Log In"
+
     first(:link, color.hex_code).click
+
     click_link "Edit Review"
+
     select("", from: "Rating")
-    fill_in 'Review', with: "I have a new found respect for this colour"
+    fill_in "Review", with: "I have a new found respect for this colour"
     click_button "Submit Review"
+
     expect(page).to have_content "Rating must be between 1 - 5"
     expect(page).to have_content "Edit Review"
     expect(page).to_not have_content "Your review is successfully saved!"
   end
 
   scenario "and should be shown error message if updated review has no body" do
+    login_as(user)
     visit root_path
-    click_link "Sign In"
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button "Log In"
+
     first(:link, color.hex_code).click
+
     click_link "Edit Review"
+
     select(4, from: "Rating")
-    fill_in 'Review', with: ""
+    fill_in "Review", with: ""
     click_button "Submit Review"
+
     expect(page).to have_content "Body can't be blank"
     expect(page).to have_content "Edit Review"
     expect(page).to_not have_content "Your review is successfully saved!"

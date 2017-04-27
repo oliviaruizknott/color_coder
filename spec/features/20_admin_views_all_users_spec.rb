@@ -4,22 +4,19 @@ require_relative "../factories/color_factory"
 require_relative "../factories/review_factory"
 
 feature "admins can see a list of users" do
+  let!(:admin)  { FactoryGirl.create(:user, role: "admin") }
+  let!(:user)   { FactoryGirl.create(:user) }
+  let!(:jane)   { FactoryGirl.create(:user, first_name: "Jane") }
+  let!(:jim)    { FactoryGirl.create(:user, first_name: "Jim") }
+  let!(:james)  { FactoryGirl.create(:user, first_name: "James") }
+  let!(:janet)  { FactoryGirl.create(:user, first_name: "Janet") }
+
+  let!(:color)  { FactoryGirl.create(:color, user: user) }
+  let!(:review) { FactoryGirl.create(:review, user: user, color: color) }
+
   scenario "from a link on the home page" do
-    user = FactoryGirl.create(:user)
-    color = FactoryGirl.create(:color, user: user)
-    FactoryGirl.create(:review, user: user, color: color)
-    FactoryGirl.create(:user, first_name: "Jane")
-    FactoryGirl.create(:user, first_name: "Jim")
-    FactoryGirl.create(:user, first_name: "James")
-    FactoryGirl.create(:user, first_name: "Janet")
-    admin = FactoryGirl.create(:user, role: 'admin')
-
+    login_as(admin)
     visit root_path
-    click_link "Sign In"
-
-    fill_in 'Email', with: admin.email
-    fill_in 'Password', with: admin.password
-    click_button "Log In"
 
     click_link "See All Users"
 
@@ -30,22 +27,7 @@ feature "admins can see a list of users" do
   end
 
   scenario "by navigating to the /users page" do
-    user = FactoryGirl.create(:user)
-    color = FactoryGirl.create(:color, user: user)
-    FactoryGirl.create(:review, user: user, color: color)
-    FactoryGirl.create(:user, first_name: "Jane")
-    FactoryGirl.create(:user, first_name: "Jim")
-    FactoryGirl.create(:user, first_name: "James")
-    FactoryGirl.create(:user, first_name: "Janet")
-    admin = FactoryGirl.create(:user, role: 'admin')
-
-    visit root_path
-    click_link "Sign In"
-
-    fill_in 'Email', with: admin.email
-    fill_in 'Password', with: admin.password
-    click_button "Log In"
-
+    login_as(admin)
     visit users_path
 
     expect(page).to have_content "Jane Smith"
@@ -56,41 +38,25 @@ feature "admins can see a list of users" do
 end
 
 feature "users cannot see a list of users" do
+  let!(:user)   { FactoryGirl.create(:user) }
+  let!(:jane)   { FactoryGirl.create(:user, first_name: "Jane") }
+  let!(:jim)    { FactoryGirl.create(:user, first_name: "Jim") }
+  let!(:james)  { FactoryGirl.create(:user, first_name: "James") }
+  let!(:janet)  { FactoryGirl.create(:user, first_name: "Janet") }
+
+  let!(:color)  { FactoryGirl.create(:color, user: user) }
+  let!(:review) { FactoryGirl.create(:review, user: user, color: color) }
+
   scenario "via a link on the home page" do
-    FactoryGirl.create(:user, first_name: "Jane")
-    FactoryGirl.create(:user, first_name: "Jim")
-    FactoryGirl.create(:user, first_name: "James")
-    FactoryGirl.create(:user, first_name: "Janet")
-    user = FactoryGirl.create(:user)
-    color = FactoryGirl.create(:color, user: user)
-    FactoryGirl.create(:review, user: user, color: color)
-
+    login_as(user)
     visit root_path
-    click_link "Sign In"
-
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button "Log In"
 
     expect(page).to_not have_content "See All Users"
   end
 
   scenario "by navigating to the /users page" do
-    FactoryGirl.create(:user, first_name: "Jane")
-    FactoryGirl.create(:user, first_name: "Jim")
-    FactoryGirl.create(:user, first_name: "James")
-    FactoryGirl.create(:user, first_name: "Janet")
-    user = FactoryGirl.create(:user)
-    color = FactoryGirl.create(:color, user: user)
-    FactoryGirl.create(:review, user: user, color: color)
+    login_as(user)
 
-    visit root_path
-    click_link "Sign In"
-
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button "Log In"
-
-    expect { visit users_path }.to raise_error
+    expect { visit users_path }.to raise_error(ActionController::RoutingError)
   end
 end

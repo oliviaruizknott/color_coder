@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class UserDashboardContainer extends Component {
+class UserLoggedinDashboardContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -45,7 +45,8 @@ class UserDashboardContainer extends Component {
   }
 
   componentDidMount(){
-    fetch('http://localhost:3000/api/colors', {method: 'get'})
+    fetch('http://localhost:3000/api/current_user', {method: 'get'})
+      .then(fetch('http://localhost:3000/api/colors', {method: 'get'}))
       .then(response => response.json())
       .then(body => {
         this.setState({ colors: body })
@@ -79,13 +80,11 @@ class UserDashboardContainer extends Component {
     // console.log(divStyle)
     return(
       <div style={divStyle} onClick={this.onHeaderClick}>
-        <div className="index">
-          <h1>COLOR_CODER</h1>
-          <p>Welcome to color_coder, where colors are rated.</p>
-        </div>
+      <h1>COLOR_CODER</h1>
+      <h3>Welcome to color_coder, where colors are rated.</h3>
       </div>
     )
   }
 }
 
-export default UserDashboardContainer
+export default UserLoggedinDashboardContainer
