@@ -27,6 +27,7 @@ class ColorsController < ApplicationController
 
   def create
     @color = Color.new(color_params_create)
+    @color.hex_code = @color.hex_code.upcase
     @color.user = current_user
 
     if @color.save

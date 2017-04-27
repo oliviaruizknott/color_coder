@@ -20,7 +20,7 @@ class ReviewsController < ApplicationController
     @reviews = Review.all
     render json: @reviews
   end
-  
+
   def edit
     @review = Review.find(params[:id])
     @review_ratings = Review::RATINGS
@@ -37,6 +37,44 @@ class ReviewsController < ApplicationController
       render :edit
     end
   end
+#
+def upvote
+  @review = Review.find(params[:id])
+  @user = current_user
+  @vote = Vote.find_by(user_id: @user.id, review_id: @review.id)
+  if @vote.nil?
+    @vote = Vote.create(user_id: @user.id, review_id: @review.id, vote_value: true)
+  elsif @vote.vote_value == true
+    @vote.destroy
+  else
+    @vote.update(vote_value: true)
+  end
+
+  respond_to do |format|
+    format.html
+    format.json { render json: { review: @review, vote: @review.tally } }
+  end
+end
+
+def downvote
+  @review = Review.find(params[:id])
+  @user = current_user
+  @vote = Vote.find_by(user_id: @user.id, review_id: @review.id)
+
+  if @vote.nil?
+    @vote = Vote.create(user_id: @user.id, review_id: @review.id, vote_value: false)
+  elsif @vote.vote_value == false
+    @vote.destroy
+  else
+    @vote.update(vote_value: false)
+  end
+
+  respond_to do |format|
+    format.html
+    format.json { render json: { review: @review, vote: @review.tally } }
+  end
+
+end
 
   def destroy
     @color = Review.find(params[:id]).color
@@ -47,6 +85,6 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:rating, :body)
+    params.require(:review).permit(:rating, :body, :votes_total)
   end
 end
