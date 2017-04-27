@@ -57,6 +57,6 @@ feature "users cannot see a list of users" do
   scenario "by navigating to the /users page" do
     login_as(user)
 
-    expect { visit users_path }.to raise_error( ActionController::RoutingError )
+    expect { visit users_path }.to raise_error(ActionController::RoutingError)
   end
 end

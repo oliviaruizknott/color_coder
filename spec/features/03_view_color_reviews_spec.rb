@@ -10,7 +10,6 @@ feature "visitors can view color reviews" do
 
   scenario "from the color show page" do
     visit color_path(color)
-    
     expect(page).to have_content color.hex_code
     expect(page).to have_content color.nickname
     expect(page).to have_content review.created_at.strftime("%B %d, %Y")
