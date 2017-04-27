@@ -12,7 +12,7 @@
     <% if current_user.id == @color.user_id && current_user.admin? %>
     <% end %>
     <% if current_user.admin? %>
-      <%= link_to 'Delete Color', @color, method: :delete %>
+      <%= link_to 'Delete Color', @color, method: :delete, data: { confirm: "Are you sure?" } %>
     <% end %>
   <% end %>
 </div>
@@ -48,7 +48,7 @@
     <% if current_user.id == review.user_id && current_user.admin? %>
     <% end %>
     <% if current_user.admin? %>
-      <%= link_to "Delete Review", review, method: :delete %>
+      <%= link_to "Delete Review", review, method: :delete, data: { confirm: "Are you sure?" } %>
     <% end %>
   <% end %>
 
