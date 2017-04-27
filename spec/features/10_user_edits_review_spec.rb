@@ -33,11 +33,6 @@ feature "visitors can edit a review" do
     expect(page).to_not have_content "This just makes me sad."
   end
 
-  scenario "only if they are logged in" do
-    visit color_path(color)
-    expect(page).to_not have_content "Edit Review"
-  end
-
   scenario "and should be shown error message if updated review has no rating" do
     login_as(user)
     visit root_path
@@ -70,5 +65,10 @@ feature "visitors can edit a review" do
     expect(page).to have_content "Body can't be blank"
     expect(page).to have_content "Edit Review"
     expect(page).to_not have_content "Your review is successfully saved!"
+  end
+
+  scenario "only if they are logged in" do
+    visit color_path(color)
+    expect(page).to_not have_content "Edit Review"
   end
 end
