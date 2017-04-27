@@ -4,7 +4,7 @@
 
 # color_coder
 
-`color_coder` is a simple review web app that allows users to read about, post, and review colors entered by hex code. [You can see this code in use here.](http://colorcoder.herokuapp.com/) To run this code on your local machine:
+**color_coder** is a simple review web app that allows users to read about, post, and review colors entered by hex code. [You can see this code in use here.](http://colorcoder.herokuapp.com/) To run this code on your local machine:
 
 ```
 $ git clone https://github.com/oliviaruizknott/color_review.git
