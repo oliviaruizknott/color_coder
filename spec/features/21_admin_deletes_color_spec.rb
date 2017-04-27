@@ -10,12 +10,8 @@ feature "admin can delete a color" do
   let!(:review) { FactoryGirl.create(:review, user: admin, color: color2) }
 
   scenario "from the home page" do
+    login_as(admin)
     visit root_path
-    click_link "Sign In"
-
-    fill_in "Email", with: admin.email
-    fill_in "Password", with: admin.password
-    click_button "Log In"
 
     expect(page).to have_content color.hex_code
     expect(page).to have_content "Delete Color"
@@ -26,12 +22,8 @@ feature "admin can delete a color" do
   end
 
   scenario "from the color show page" do
+    login_as(admin)
     visit root_path
-    click_link "Sign In"
-
-    fill_in "Email", with: admin.email
-    fill_in "Password", with: admin.password
-    click_button "Log In"
 
     expect(page).to have_content color.hex_code
     first(:link, color.hex_code).click
@@ -49,24 +41,16 @@ feature "user cannot delete color" do
   let!(:color)  { FactoryGirl.create(:color, user: user) }
 
   scenario "from the home page" do
+    login_as(user)
     visit root_path
-    click_link "Sign In"
-
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log In"
 
     expect(page).to have_content color.hex_code
     expect(page).to_not have_content "Delete Color"
   end
 
   scenario "from the color show page" do
+    login_as(user)
     visit root_path
-    click_link "Sign In"
-
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log In"
 
     expect(page).to have_content color.hex_code
     first(:link, color.hex_code).click

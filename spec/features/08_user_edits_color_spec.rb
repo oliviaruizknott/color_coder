@@ -9,12 +9,8 @@ feature "visitors can edit a color" do
   let!(:review) { FactoryGirl.create(:review, user: user, color: color) }
 
   scenario "from a link on the color show page if logged in" do
+    login_as(user)
     visit root_path
-    click_link "Sign In"
-
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log In"
 
     first(:link, color.hex_code).click
     first(:link, "Edit Color").click
@@ -23,12 +19,8 @@ feature "visitors can edit a color" do
   end
 
   scenario "and successfully update the database and be redirected to the show page" do
+    login_as(user)
     visit root_path
-    click_link "Sign In"
-
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log In"
 
     first(:link, color.hex_code).click
     first(:link, "Edit Color").click
@@ -44,15 +36,9 @@ feature "visitors can edit a color" do
     visit color_path(color)
     expect(page).to_not have_content "Edit Color"
 
-    visit root_path
-    click_link "Sign In"
-
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log In"
+    login_as(user)
 
     visit color_path(color)
-
     expect(page).to have_content "Edit Color"
   end
 end

@@ -8,12 +8,10 @@ feature "user can post review" do
   let!(:color) { FactoryGirl.create(:color, user: user) }
 
   scenario "from the color show page" do
+    login_as(user)
     visit root_path
-    click_link "Sign In"
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log In"
-    expect(page).to have_content("Welcome Back!")
+
+    expect(page).to have_content(color.hex_code)
 
     first(:link, color.hex_code).click
 
@@ -24,12 +22,10 @@ feature "user can post review" do
   end
 
   scenario "Rating is not selected and review is not saved" do
+    login_as(user)
     visit root_path
-    click_link "Sign In"
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log In"
-    expect(page).to have_content("Welcome Back!")
+
+    expect(page).to have_content(color.hex_code)
 
     first(:link, color.hex_code).click
     fill_in "Review", with: "This is great!"
@@ -40,12 +36,10 @@ feature "user can post review" do
   end
 
   scenario "Review is not provided and review is not saved" do
+    login_as(user)
     visit root_path
-    click_link "Sign In"
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log In"
-    expect(page).to have_content("Welcome Back!")
+
+    expect(page).to have_content(color.hex_code)
 
     first(:link, color.hex_code).click
     select(4, from: "Rating")

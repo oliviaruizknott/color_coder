@@ -9,12 +9,8 @@ feature "visitors can delete their own review" do
   let!(:review)  { FactoryGirl.create(:review, user: user, color: color) }
 
   scenario "from a button on the review edit page if logged in" do
+    login_as(user)
     visit root_path
-    click_link "Sign In"
-
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log In"
 
     first(:link, color.hex_code).click
     click_link "Edit Review"

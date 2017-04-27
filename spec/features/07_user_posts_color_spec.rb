@@ -9,24 +9,16 @@ feature "Users can add a new color" do
   let!(:review) { FactoryGirl.create(:review, user: user, color: color) }
 
   scenario "from a link on the root path if they are logged in" do
+    login_as(user)
     visit root_path
-    click_link "Sign In"
-
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log In"
 
     click_link "+"
     expect(page).to have_content "New Color"
   end
 
   scenario "and can get back to the Index page" do
+    login_as(user)
     visit root_path
-    click_link "Sign In"
-
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log In"
 
     click_link "+"
     fill_in "Hex Code", with: "#123456"
@@ -36,12 +28,8 @@ feature "Users can add a new color" do
   end
 
   scenario "successfully with nickname" do
+    login_as(user)
     visit root_path
-    click_link "Sign In"
-
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log In"
 
     click_link "+"
 
@@ -55,12 +43,8 @@ feature "Users can add a new color" do
   end
 
   scenario "successfully without nickname" do
+    login_as(user)
     visit root_path
-    click_link "Sign In"
-
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log In"
 
     click_link "+"
 
@@ -72,12 +56,8 @@ feature "Users can add a new color" do
   end
 
   scenario "but are not able to enter a color already in the database" do
+    login_as(user)
     visit root_path
-    click_link "Sign In"
-
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log In"
 
     click_link "+"
 
@@ -88,12 +68,8 @@ feature "Users can add a new color" do
   end
 
   scenario "but are not able to leave the hex code blank" do
+    login_as(user)
     visit root_path
-    click_link "Sign In"
-
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log In"
 
     click_link "+"
 
@@ -103,12 +79,8 @@ feature "Users can add a new color" do
   end
 
   scenario "only if they are logged in" do
+    login_as(user)
     visit root_path
-    click_link "Sign In"
-
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log In"
 
     expect(page).to have_content "+"
     expect(page).to_not have_content "COLOR_CODERS"

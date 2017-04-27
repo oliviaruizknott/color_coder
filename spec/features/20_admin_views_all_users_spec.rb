@@ -15,12 +15,8 @@ feature "admins can see a list of users" do
   let!(:review) { FactoryGirl.create(:review, user: user, color: color) }
 
   scenario "from a link on the home page" do
+    login_as(admin)
     visit root_path
-    click_link "Sign In"
-
-    fill_in "Email", with: admin.email
-    fill_in "Password", with: admin.password
-    click_button "Log In"
 
     click_link "See All Users"
 
@@ -31,13 +27,7 @@ feature "admins can see a list of users" do
   end
 
   scenario "by navigating to the /users page" do
-    visit root_path
-    click_link "Sign In"
-
-    fill_in "Email", with: admin.email
-    fill_in "Password", with: admin.password
-    click_button "Log In"
-
+    login_as(admin)
     visit users_path
 
     expect(page).to have_content "Jane Smith"
@@ -58,23 +48,14 @@ feature "users cannot see a list of users" do
   let!(:review) { FactoryGirl.create(:review, user: user, color: color) }
 
   scenario "via a link on the home page" do
+    login_as(user)
     visit root_path
-    click_link "Sign In"
-
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log In"
 
     expect(page).to_not have_content "See All Users"
   end
 
   scenario "by navigating to the /users page" do
-    visit root_path
-    click_link "Sign In"
-
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log In"
+    login_as(user)
 
     expect { visit users_path }.to raise_error( ActionController::RoutingError )
   end

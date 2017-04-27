@@ -13,13 +13,7 @@ feature "admins can delete user" do
   let!(:review) { FactoryGirl.create(:review, user: admin, color: color) }
 
   scenario "from the /users page" do
-    visit root_path
-    click_link "Sign In"
-
-    fill_in 'Email', with: admin.email
-    fill_in 'Password', with: admin.password
-    click_button "Log In"
-
+    login_as(admin)
     visit users_path
 
     expect(page).to have_content "Jane Smith"

@@ -10,13 +10,8 @@ feature "admin can delete a review" do
 
   scenario "from the color show page" do
     admin = FactoryGirl.create(:user, role: "admin")
-
+    login_as(admin)
     visit root_path
-    click_link "Sign In"
-
-    fill_in "Email", with: admin.email
-    fill_in "Password", with: admin.password
-    click_button "Log In"
 
     expect(page).to have_content color.hex_code
     first(:link, color.hex_code).click
@@ -36,14 +31,9 @@ feature "user cannot delete review" do
   let!(:review)  { FactoryGirl.create(:review, user: user, color: color) }
 
   scenario "from the color show page" do
+    login_as(user)
     visit root_path
-    click_link "Sign In"
 
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log In"
-
-    expect(page).to have_content review.body
     first(:link, color.hex_code).click
 
     expect(page).to have_content review.body
