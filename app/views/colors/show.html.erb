@@ -1,21 +1,24 @@
 <div class="username" style="background-color:<%= @color.hex_code %>; color:<%= @text_color %>;">
   <h1><%= @color.hex_code %></h1>
-    <% if @color.nickname != nil %>
-      <h3><%= @color.nickname %></h3>
+  <% if @color.nickname != nil %>
+    <h3><%= @color.nickname %></h3>
+  <% end %>
+  <% if user_signed_in? %>
+    <% if current_user == @color.user %>
+    <div id="editlink">
+      <%= link_to 'Edit Color', edit_color_path(@color) %>
+    </div>
     <% end %>
-  </div>
+    <% if current_user.id == @color.user_id && current_user.admin? %>
+        |
+    <% end %>
+    <% if current_user.admin? %>
+      <%= link_to 'Delete Color', @color, method: :delete %>
+    <% end %>
+  <% end %>
+</div>
 
-<% if user_signed_in? %>
-  <% if current_user == @color.user %>
-    <%= link_to 'Edit Color', edit_color_path(@color) %>
-  <% end %>
-  <% if current_user.id == @color.user_id && current_user.admin? %>
-      |
-  <% end %>
-  <% if current_user.admin? %>
-    <%= link_to 'Delete Color', @color, method: :delete %>
-  <% end %>
-<% end %>
+
 
 <% if user_signed_in? %>
   <%= form_for [ @color, @review ] do |f| %>

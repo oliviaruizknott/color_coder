@@ -7,6 +7,7 @@ $raleway: 'Raleway', sans-serif;
 body {
   font-family: $ruloku;
   font-size: 18px;
+  margin-top: 10px;
 }
 
 // a {
@@ -37,6 +38,11 @@ div {
   transition: .5s;
   }
 }
+#editlink {
+  font-size: 18px;
+  margin: 9px;
+}
+
 
 .index {
   font-family: 'Raleway', sans-serif;
@@ -67,8 +73,9 @@ div.boxes {
 }
 
 div.username {
+  margin-top: 50px;
   text-align: center;
-  font-family: 'Raleway', sans-serif;
+  font-family: $ruloku;
   text-transform: uppercase;
   padding: 2px;
   border-bottom: 1px solid black;
@@ -76,7 +83,7 @@ div.username {
   margin: 40px 0;
   h1 {
     font-size: 125px;
-    margin-top: 60px;
+    // margin-top: 60px;
   }
   h3 {
     margin-top: -60px;
@@ -88,7 +95,8 @@ div.subhead {
   text-align: center;
   font-family: 'Raleway', sans-serif;
   text-transform: uppercase;
-  padding: 0px;
+  padding: 20px;
+  margin-bottom: 30px;
   border-bottom: 1px solid black;
   border-top: 1px solid black;
   margin-top: 80px;

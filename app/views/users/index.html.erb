@@ -1,0 +1,9 @@
+<h3>All Users</h3>
+<%= link_to 'Home', colors_path %>
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <%= user.first_name %> <%= user.last_name %> | <%= link_to 'Delete User', user, method: :delete, data: { confirm: "Are you sure?" } %>
+    </li>
+  <% end %>
+</ul>

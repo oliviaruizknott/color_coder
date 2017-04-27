@@ -73,7 +73,8 @@ class UserDashboardContainer extends Component {
       height: "300px",
       border: "1px black solid",
       textAlign: "center",
-      verticalAlign: "top"
+      verticalAlign: "top",
+      marginTop: "30px"
     };
     // console.log("rendered divsyle=")
     // console.log(divStyle)
