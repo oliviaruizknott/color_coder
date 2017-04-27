@@ -37,6 +37,6 @@ feature "visitors can view color details" do
     visit color_path(color)
     click_link "Home"
 
-    expect(page).to have_content "COLOR_CODER"
+    expect(page).to have_content color.hex_code
   end
 end
