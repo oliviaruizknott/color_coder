@@ -57,7 +57,25 @@ div {
   vertical-align: top;
   font-family: $ruloku;
   letter-spacing: 1px;
-  margin-bottom: 56px;
+  margin-bottom: 60px;
+}
+
+.colorheader {
+  margin-top: 50px;
+  text-align: center;
+  font-family: $ruloku;
+  text-transform: uppercase;
+  padding: 2px;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  margin: 40px 0;
+  h1 {
+    font-size: 125px;
+  }
+  h3 {
+    font-size: 60px;
+    margin-top: -88px;
+  }
 }
 
 .username {
@@ -318,8 +336,25 @@ h4 {
       margin-bottom: 60px;
     }
   }
+  .actions3 {
+    input {
+      text-align: center;
+      width: 400px;
+      height: 41px;
+      border-radius: 5px;
+      background-color: #aaaaaa;
+      font-size: 18px;
+      margin: auto;
+      margin-top: 20px;
+      margin-bottom: 60px;
+    }
+  }
 }
 
+.edit {
+  text-align: center;
+  margin-bottom: 10px;
+}
 
 div.form {
   margin-top: 30px;
@@ -337,9 +372,20 @@ div.form {
   border-bottom: 1px black solid;
   padding: 20px;
   p {
-    text-align: left;
     font-size: 24px;
     margin-top: 0;
     text-align: center;
+  }
+}
+
+.users {
+  margin: auto;
+  width: 400px;
+  // border-bottom: 1px black solid;
+  padding: 20px;
+  li {
+    text-align: left;
+    font-size: 24px;
+    margin-top: 0;
   }
 }

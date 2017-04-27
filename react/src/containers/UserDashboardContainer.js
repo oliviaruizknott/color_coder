@@ -56,7 +56,7 @@ class UserDashboardContainer extends Component {
       // padding: "10px",
       // margin: "20px",
       width: "100%",
-      height: "300px",
+      height: "365px",
       border: "1px black solid",
       textAlign: "center",
       verticalAlign: "top",

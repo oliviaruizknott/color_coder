@@ -1,4 +1,4 @@
-<div class="username" style="background-color:<%= @color.hex_code %>; color:<%= @text_color %>;">
+<div class="colorheader" style="background-color:<%= @color.hex_code %>; color:<%= @text_color %>;">
   <h1><%= @color.hex_code %></h1>
   <% if @color.nickname != nil %>
     <h3><%= @color.nickname %></h3>
@@ -9,8 +9,6 @@
       <%= link_to 'Edit Color', edit_color_path(@color) %>
     </div>
     <% end %>
-    <% if current_user.id == @color.user_id && current_user.admin? %>
-    <% end %>
     <% if current_user.admin? %>
       <%= link_to 'Delete Color', @color, method: :delete %>
     <% end %>
@@ -19,40 +17,40 @@
 
 <% if user_signed_in? %>
   <%= form_for [ @color, @review ] do |f| %>
-  <div class="form1">
-    <div class="field1">
-      <%= f.label :rating %>
-      <%= f.select :rating, @review_ratings %>
-    </div>
+    <div class="form1">
+      <div class="field1">
+        <%= f.label :rating %>
+        <%= f.select :rating, @review_ratings %>
+      </div>
 
-    <div class="field2">
-      <%= f.text_area :body %><br/>
-      <%= f.label :body, "Review" %>
-    </div>
+      <div class="field2">
+        <%= f.text_area :body %><br/>
+        <%= f.label :body, "Review" %>
+      </div>
 
-    <div class="actions">
-      <%= f.submit value="Submit Review" %>
+      <div class="actions">
+        <%= f.submit value="Submit Review" %>
+      </div>
     </div>
-  </div>
   <% end %>
 <% end %>
 
 <h4>Reviews</h4>
 <% @color.reviews.each do |review| %>
-  <% if user_signed_in? %>
-    <% if current_user == review.user %>
-    <div class="edit">
-      <%= link_to "Edit Review", edit_review_path(review) %>
-    </div>
-    <% end %>
-    <% if current_user.id == review.user_id && current_user.admin? %>
-    <% end %>
-    <% if current_user.admin? %>
-      <%= link_to "Delete Review", review, method: :delete %>
-    <% end %>
-  <% end %>
-
   <div class="reviews">
+    <% if user_signed_in? %>
+      <% if current_user == review.user %>
+        <div class="edit">
+          <%= link_to "Edit Review", edit_review_path(review) %>
+        </div>
+      <% end %>
+      <% if current_user.admin? %>
+        <div class="edit">
+          <%= link_to "Delete Review", review, method: :delete %>
+        </div>
+      <% end %>
+    <% end %>
+
     <p style="color: #aaaaaa">Rating: <%= review.rating %></p>
     <p style="font-size: 30px"><%= review.body %></p>
     <p style="color: #aaaaaa"><%= review.created_at.strftime("%B %d, %Y") %></p>

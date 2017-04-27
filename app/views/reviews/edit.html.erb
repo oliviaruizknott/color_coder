@@ -1,18 +1,25 @@
-<h1>Edit Review</h1>
+<div class="subhead">
+  <h4>Edit Review</h4>
+</div>
+
 <%= form_for(@review) do |f| %>
-  <div class="field">
-    <%= f.label :rating %>
-    <%= f.select :rating, @review_ratings %>
-  </div>
+  <div class="form1">
+    <div class="field1">
+      <%= f.label :rating %>
+      <%= f.select :rating, @review_ratings %>
+    </div>
 
-  <div class="field">
-    <%= f.label :body, "Review" %>
-    <%= f.text_area :body %>
-  </div>
+    <div class="field2">
+      <%= f.text_area :body %>
+      <%= f.label :body, "Review" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit value="Submit Review" %>
+    <div class="actions">
+      <%= f.submit value="Submit Review" %>
+    </div>
   </div>
-
 <% end %>
-<%= link_to 'Home', colors_path %> | <%= link_to "Delete Review", @review, method: :delete %>
+
+<div class="edit">
+  <%= link_to 'Home', colors_path %> | <%= link_to "Delete Review", @review, method: :delete %>
+</div>
