@@ -21,7 +21,6 @@ class UserDashboardContainer extends Component {
     return luma;
   };
 
-  //
   textColor(colorString) {
     let luma = this.brightness(colorString);
     console.log(luma);
@@ -35,13 +34,8 @@ class UserDashboardContainer extends Component {
   onHeaderClick(){
     console.log("clicked")
     let index = Math.floor(Math.random()*this.state.colors.length)
-    // console.log(index)
     let color = this.state.colors[index]
-    // console.log(color)
     this.setState({ currentBannerColor: color.hex_code})
-    // console.log("clicked")
-    // console.log(this.state.currentBannerColor)
-
   }
 
   componentDidMount(){
@@ -50,20 +44,12 @@ class UserDashboardContainer extends Component {
       .then(body => {
         this.setState({ colors: body })
         let index = Math.floor(Math.random()*body.length)
-        // console.log("Mounted index = ")
-        // console.log(index)
         let color = body[index]
-        // console.log("Mounted color = ")
-        // console.log(color)
         this.setState({ currentBannerColor: color.hex_code})
-        // console.log("mounted state.currentBannerColor = ")
-        // console.log(this.state.currentBannerColor)
       })
   }
 
   render(){
-    // console.log("rendered")
-    // console.log(this.state.currentBannerColor)
     let divStyle = {
       backgroundColor: this.state.currentBannerColor,
       color: this.textColor(this.state.currentBannerColor),
@@ -76,8 +62,6 @@ class UserDashboardContainer extends Component {
       verticalAlign: "top",
       marginTop: "30px"
     };
-    // console.log("rendered divsyle=")
-    // console.log(divStyle)
     return(
       <div style={divStyle} onClick={this.onHeaderClick}>
         <div className="index">

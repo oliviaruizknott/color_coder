@@ -10,15 +10,12 @@
     </div>
     <% end %>
     <% if current_user.id == @color.user_id && current_user.admin? %>
-        |
     <% end %>
     <% if current_user.admin? %>
       <%= link_to 'Delete Color', @color, method: :delete %>
     <% end %>
   <% end %>
 </div>
-
-
 
 <% if user_signed_in? %>
   <%= form_for [ @color, @review ] do |f| %>
@@ -40,8 +37,6 @@
   <% end %>
 <% end %>
 
-<!-- <div id="reviews"></div> -->
-
 <h4>Reviews</h4>
 <% @color.reviews.each do |review| %>
   <% if user_signed_in? %>
@@ -51,19 +46,11 @@
     </div>
     <% end %>
     <% if current_user.id == review.user_id && current_user.admin? %>
-      |
     <% end %>
     <% if current_user.admin? %>
       <%= link_to "Delete Review", review, method: :delete %>
     <% end %>
   <% end %>
-
-  <!-- <div className="name">
-      <h3>Rating: {this.props.rating}</h3>
-    </div>
-    <div className="body">
-      <h3>{this.props.body}</h3>
-    </div> -->
 
   <div class="reviews">
     <p style="color: #aaaaaa">Rating: <%= review.rating %></p>

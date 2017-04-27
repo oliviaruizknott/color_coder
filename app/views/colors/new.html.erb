@@ -1,20 +1,20 @@
-<h1>New Color</h1>
-
-
+<div class="subhead">
+  <h4>New Color</h4>
+</div>
 
 <%= form_for(@color) do |f| %>
-
-  <div class="field">
+<div class="form2">
+  <div class="field3">
     <%= f.label :hex_code, "Hex Code" %><br />
     <%= f.text_field :hex_code %>
   </div>
-
-  <div class="field">
+  <div class="field3">
     <%= f.label :nickname %><br />
     <%= f.text_field :nickname %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Add Color"%>
+    <%= f.submit value="Add Color"%>
   </div>
+</div>
 <% end %>
