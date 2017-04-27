@@ -4,48 +4,39 @@ require_relative "../factories/color_factory"
 require_relative "../factories/review_factory"
 
 feature "admin can delete a review" do
+  let!(:user)    { FactoryGirl.create(:user) }
+  let!(:color)   { FactoryGirl.create(:color, user: user) }
+  let!(:review)  { FactoryGirl.create(:review, user: user, color: color) }
+
   scenario "from the color show page" do
-    jane = FactoryGirl.create(:user, first_name: "Jane")
-    aquasmoke = Color.create(hex_code: "#5b756c", nickname: "Aqua Smoke", user: jane)
-    Review.create(user: jane, color: aquasmoke, rating: 5, body: "This color ROCKS!")
-    admin = FactoryGirl.create(:user, role: 'admin')
-
+    admin = FactoryGirl.create(:user, role: "admin")
+    login_as(admin)
     visit root_path
-    click_link "Sign In"
 
-    fill_in 'Email', with: admin.email
-    fill_in 'Password', with: admin.password
-    click_button "Log In"
+    expect(page).to have_content color.hex_code
+    first(:link, color.hex_code).click
 
-    expect(page).to have_content "#5b756c"
-    first(:link, "#5b756c").click
-
-    expect(page).to have_content "This color ROCKS!"
+    expect(page).to have_content review.body
     expect(page).to have_content "Delete Review"
 
     click_link "Delete Review"
 
-    expect(page).to_not have_content "This color ROCKS!"
+    expect(page).to_not have_content review.body
   end
 end
 
 feature "user cannot delete review" do
+  let!(:user)    { FactoryGirl.create(:user) }
+  let!(:color)   { FactoryGirl.create(:color, user: user) }
+  let!(:review)  { FactoryGirl.create(:review, user: user, color: color) }
+
   scenario "from the color show page" do
-    jane = FactoryGirl.create(:user, first_name: "Jane")
-    aquasmoke = Color.create(hex_code: "#5b756c", nickname: "Aqua Smoke", user: jane)
-    Review.create(user: jane, color: aquasmoke, rating: 5, body: "This color ROCKS!")
-
+    login_as(user)
     visit root_path
-    click_link "Sign In"
 
-    fill_in 'Email', with: jane.email
-    fill_in 'Password', with: jane.password
-    click_button "Log In"
+    first(:link, color.hex_code).click
 
-    expect(page).to have_content "This color ROCKS!"
-    first(:link, "#5b756c").click
-
-    expect(page).to have_content "This color ROCKS!"
+    expect(page).to have_content review.body
     expect(page).to_not have_content "Delete Review"
   end
 end
