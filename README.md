@@ -4,7 +4,7 @@
 
 # color_coder
 
-`color_coder` is a simple review web app that allows users to read about, post, and review colors entered by hex code. [You can see this code in use here.](http://colorcoder.herokuapp.com/) To run this code on your local machine:
+**color_coder** is a simple review web app that allows users to read about, post, and review colors entered by hex code. [You can see this code in use here.](http://colorcoder.herokuapp.com/) To run this code on your local machine:
 
 ```
 $ git clone https://github.com/oliviaruizknott/color_review.git
@@ -36,7 +36,7 @@ This app allows visitors to the site to see and search all the colors and review
 For a more complete list of features, see "User Stories & Acceptance Criteria" below.
 
 ## Technologies in this Project
-This project is built a **Ruby on Rails** framework which incorporates **React.js** components. It uses **Devise** for user authentication, **RSpec** and **Capybara** for testing, **Sass** for styling, and **PostgreSQL** for database management.
+This project is built in a **Ruby on Rails** framework which incorporates **React.js** components. It uses **Devise** for user authentication, **RSpec** and **Capybara** for testing, **Sass** for styling, and **PostgreSQL** for database management.
 
 ## User Stories & Acceptance Criteria
 This section outlines some of user stories and acceptance criteria used to drive our development. For the purposes of these user stories, a **visitor** is an unauthenticated user (that is, a user who has not signed in); a **user** is an authenticated user (that is, a user who has signed up and signed in); and an **admin** is an authenticated user with admin privileges (that is, a user who has signed up, signed in, and been designated as an "admin").

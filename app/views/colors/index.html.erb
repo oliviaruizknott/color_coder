@@ -36,7 +36,7 @@
      <p><%= color.nickname %></p>
       <% if user_signed_in? && current_user.admin? %>
       <div style="margin-top: -15px">
-        <%= link_to 'Delete Color', color, method: :delete %>
+        <%= link_to 'Delete Color', color, method: :delete, data: { confirm: "Are you sure?" } %>
       </div>
       <% end %>
     </div>
