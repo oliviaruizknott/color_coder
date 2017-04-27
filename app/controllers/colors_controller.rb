@@ -26,6 +26,10 @@ class ColorsController < ApplicationController
 
   def new
     @color = Color.new
+    @colors = Color.all
+    @search_colors = Color.search(params[:query])
+    @rand_color = @colors.sample
+    @text_color = text_color(@rand_color.hex_code)
   end
 
   def create
