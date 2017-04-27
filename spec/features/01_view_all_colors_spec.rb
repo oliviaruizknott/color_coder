@@ -3,12 +3,12 @@ require_relative "../factories/user_factory"
 require_relative "../factories/color_factory"
 require_relative "../factories/review_factory"
 
-feature "visitors can view colors" do
-  scenario "from the root path" do
-    user = FactoryGirl.create(:user)
-    color = FactoryGirl.create(:color, user: user)
-    review = FactoryGirl.create(:review, user: user, color: color)
+feature "visitor can view colors" do
+  let!(:user)   { FactoryGirl.create(:user) }
+  let!(:color)  { FactoryGirl.create(:color, user: user) }
+  let!(:review) { FactoryGirl.create(:review, user: user, color: color) }
 
+  scenario "from the root path" do
     visit root_path
 
     expect(page).to have_content color.hex_code

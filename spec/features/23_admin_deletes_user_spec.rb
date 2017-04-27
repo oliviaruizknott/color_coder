@@ -4,15 +4,15 @@ require_relative "../factories/color_factory"
 require_relative "../factories/review_factory"
 
 feature "admins can delete user" do
-  scenario "from the /users page" do
-    FactoryGirl.create(:user, first_name: "Jane")
-    FactoryGirl.create(:user, first_name: "Jim")
-    FactoryGirl.create(:user, first_name: "James")
-    FactoryGirl.create(:user, first_name: "Janet")
-    admin = FactoryGirl.create(:user, role: 'admin')
-    color = FactoryGirl.create(:color, user: admin)
-    FactoryGirl.create(:review, user: admin, color: color)
+  let!(:jane)   { FactoryGirl.create(:user, first_name: "Jane") }
+  let!(:jim)    { FactoryGirl.create(:user, first_name: "Jim") }
+  let!(:james)  { FactoryGirl.create(:user, first_name: "James") }
+  let!(:janet)  { FactoryGirl.create(:user, first_name: "Janet") }
+  let!(:admin)  { FactoryGirl.create(:user, role: 'admin') }
+  let!(:color)  { FactoryGirl.create(:color, user: admin) }
+  let!(:review) { FactoryGirl.create(:review, user: admin, color: color) }
 
+  scenario "from the /users page" do
     visit root_path
     click_link "Sign In"
 
@@ -29,7 +29,7 @@ feature "admins can delete user" do
 
     expect(page).to have_content "Delete User"
     first(:link, "Delete User").click
-    
+
     expect(page).to_not have_content "Jane Smith"
   end
 end

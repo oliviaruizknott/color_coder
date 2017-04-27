@@ -3,12 +3,12 @@ require_relative "../factories/user_factory"
 require_relative "../factories/color_factory"
 require_relative "../factories/review_factory"
 
-feature "visitors can view color details" do
-  scenario "from the color show page" do
-    user = FactoryGirl.create(:user)
-    color = FactoryGirl.create(:color, user: user)
-    review = FactoryGirl.create(:review, user: user, color: color)
+feature "visitor can view color details" do
+  let!(:user)   { FactoryGirl.create(:user) }
+  let!(:color)  { FactoryGirl.create(:color, user: user) }
+  let!(:review) { FactoryGirl.create(:review, user: user, color: color) }
 
+  scenario "from the color show page" do
     visit color_path(color)
 
     expect(page).to have_content color.hex_code
@@ -16,11 +16,7 @@ feature "visitors can view color details" do
     expect(page).to have_content "Reviews"
   end
 
-  scenario "by clicking color link on the index page" do
-    user = FactoryGirl.create(:user)
-    color = FactoryGirl.create(:color, user: user)
-    review = FactoryGirl.create(:review, user: user, color: color)
-
+  scenario "by clicking color link on the home page" do
     visit colors_path
     first(:link, color.hex_code).click
 
@@ -30,10 +26,6 @@ feature "visitors can view color details" do
   end
 
   scenario "and can get back to index page" do
-    user = FactoryGirl.create(:user)
-    color = FactoryGirl.create(:color, user: user)
-    review = FactoryGirl.create(:review, user: user, color: color)
-
     visit color_path(color)
     click_link "Home"
 
