@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import UserColor from '../components/UserReview'
+// import UserColor from '../components/UserReview'
 
 class UserDashboardReviewsContainer extends Component {
   constructor(props) {
@@ -40,4 +40,4 @@ class UserDashboardReviewsContainer extends Component {
 
 
 
-export default UserDashboardReviewsContainer
+// export default UserDashboardReviewsContainer

@@ -30,5 +30,3 @@ class UserReview extends Component {
     )
   }
 }
-
-export default UserReview;

@@ -19,5 +19,3 @@ class FlatButton extends Component {
     )
   }
 }
-
-export default FlatButton;

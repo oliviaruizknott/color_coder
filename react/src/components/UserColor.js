@@ -32,5 +32,3 @@ class UserColor extends Component {
     )
   }
 }
-
-export default UserColor;
