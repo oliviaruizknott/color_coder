@@ -17,25 +17,27 @@
 
 <% @search_colors.each do |color| %>
   <% if current_user == color.user %>
-    <div class="boxes" style="background-color:<%= color.hex_code %>;">
-      <h1><a style="color: <%= color.text_color(color.hex_code) %>;"
-   href="colors/<%= color.id %>"><%= color.hex_code %></a></h1>
-      <p><%= color.nickname %></p>
-    </div>
+  <div class="boxes" style="background-color:<%= color.hex_code %>;">
+    <h1><a style="color: <%= color.text_color(color.hex_code) %>;"
+ href="colors/<%= color.id %>"><%= color.hex_code %></a></h1>
+    <p><%= color.nickname %></p>
+  </div>
   <% end %>
 <% end %>
 
 <div class="subhead">
-  <h4>All Colors:</h4>
+  <h4>All Colors</h4>
 </div>
 
 <% @search_colors.each do |color| %>
     <div class="boxes" style="background-color:<%= color.hex_code %>;">
       <h1><a style="color: <%= color.text_color(color.hex_code) %>;"
    href="colors/<%= color.id %>"><%= color.hex_code %></a></h1>
-   <% if user_signed_in? && current_user.admin? %>
-     <%= link_to 'Delete Color', color, method: :delete %>
-   <% end %>
-      <p><%= color.nickname %></p>
+     <p><%= color.nickname %></p>
+      <% if user_signed_in? && current_user.admin? %>
+      <div style="margin-top: -15px">
+        <%= link_to 'Delete Color', color, method: :delete %>
+      </div>
+      <% end %>
     </div>
 <% end %>

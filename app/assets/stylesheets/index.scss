@@ -8,18 +8,8 @@ body {
   font-family: $ruloku;
   font-size: 18px;
   margin-top: 10px;
+  margin: 10px;
 }
-
-// a {
-//   font-family: $ruloku;
-//   font-size: 21px;
-//   text-decoration: none;
-//   :hover {
-//     color: red;
-//   }
-// }
-
-
 
 #super a {
   padding: none;
@@ -30,19 +20,17 @@ body {
 div {
   a {
     text-decoration: none;
-    color: white;
   }
-
   a:hover {
-  color: black;
+  color: #aaaaaa;
   transition: .5s;
   }
 }
+
 #editlink {
   font-size: 18px;
   margin: 9px;
 }
-
 
 .index {
   font-family: 'Raleway', sans-serif;
@@ -57,7 +45,7 @@ div {
   }
 }
 
-div.boxes {
+.boxes {
   border: 1pt solid black;
   padding: 10px;
   margin: 20px;
@@ -72,10 +60,10 @@ div.boxes {
   margin-bottom: 56px;
 }
 
-div.username {
+.username {
   margin-top: 50px;
   text-align: center;
-  font-family: $ruloku;
+  font-family: 'Raleway', sans-serif;
   text-transform: uppercase;
   padding: 2px;
   border-bottom: 1px solid black;
@@ -83,7 +71,6 @@ div.username {
   margin: 40px 0;
   h1 {
     font-size: 125px;
-    // margin-top: 60px;
   }
   h3 {
     margin-top: -60px;
@@ -163,9 +150,185 @@ h4 {
   }
 }
 
+.form2 {
+  width: 700px;
+  margin: auto;
+  text-align: center;
+  font-size: 20px;
+  margin-top: 10px;
+  .field3 {
+    #color_hex_code {
+      font-size: 18px;
+      margin-top: 10px;
+      width: 700px;
+      height: 30px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    #color_nickname {
+      font-size: 18px;
+      margin-bottom: 30px;
+      margin-top: 10px;
+      width: 700px;
+      height: 30px;
+      text-align: center;
+    }
+  }
+  .actions {
+    input {
+      text-align: center;
+      width: 160px;
+      height: 41px;
+      border-radius: 5px;
+      background-color: #aaaaaa;
+      font-size: 18px;
+      margin: auto;
+      margin-top: -10px;
+      margin-bottom: 60px;
+
+    }
+  }
+}
+
+.form3 {
+  width: 700px;
+  margin: auto;
+  text-align: center;
+  font-size: 20px;
+  margin-top: 10px;
+  .field5 {
+    #user_email {
+      font-size: 18px;
+      margin-top: 10px;
+      width: 700px;
+      height: 30px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    #user_password {
+      font-size: 18px;
+      margin-bottom: 30px;
+      margin-top: 10px;
+      width: 700px;
+      height: 30px;
+      text-align: center;
+    }
+  }
+  .field6 {
+    font-size: 21px;
+    #user_remember_me {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  .actions {
+    input {
+      text-align: center;
+      width: 160px;
+      height: 41px;
+      border-radius: 5px;
+      background-color: #aaaaaa;
+      font-size: 18px;
+      margin: auto;
+      margin-top: 20px;
+      margin-bottom: 60px;
+    }
+  }
+}
+
+.form4 {
+  width: 700px;
+  margin: auto;
+  text-align: center;
+  font-size: 20px;
+  margin-top: 10px;
+  .field7 {
+    #user_first_name {
+      font-size: 18px;
+      margin-top: 10px;
+      width: 700px;
+      height: 30px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    #user_last_name {
+      font-size: 18px;
+      margin-bottom: 30px;
+      margin-top: 10px;
+      width: 700px;
+      height: 30px;
+      text-align: center;
+    }
+    #user_email {
+      font-size: 18px;
+      margin-bottom: 30px;
+      margin-top: 10px;
+      width: 700px;
+      height: 30px;
+      text-align: center;
+    }
+    #user_password {
+      font-size: 18px;
+      margin-bottom: 30px;
+      margin-top: 10px;
+      width: 700px;
+      height: 30px;
+      text-align: center;
+    }
+    #user_password_confirmation {
+      font-size: 18px;
+      margin-bottom: 30px;
+      margin-top: 10px;
+      width: 700px;
+      height: 30px;
+      text-align: center;
+    }
+    #user_current_password {
+      font-size: 18px;
+      margin-bottom: 30px;
+      margin-top: 10px;
+      width: 700px;
+      height: 30px;
+      text-align: center;
+    }
+  }
+  .actions {
+    input {
+      text-align: center;
+      width: 160px;
+      height: 41px;
+      border-radius: 5px;
+      background-color: #aaaaaa;
+      font-size: 18px;
+      margin: auto;
+      margin-top: 20px;
+      margin-bottom: 60px;
+    }
+  }
+  .actions2 {
+    input {
+      text-align: center;
+      width: 200px;
+      height: 41px;
+      border-radius: 5px;
+      background-color: #aaaaaa;
+      font-size: 18px;
+      margin: auto;
+      margin-top: 20px;
+      margin-bottom: 60px;
+    }
+  }
+}
+
+
+div.form {
+  margin-top: 30px;
+}
+
 .flash {
   padding: 1em;
-  background-color: #3B9089;
+  font-size: 18px;
+  background-color: #aaaaaa;
 }
 
 .reviews {
