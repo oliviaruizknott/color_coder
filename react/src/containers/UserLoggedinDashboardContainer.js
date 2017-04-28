@@ -1,10 +1,10 @@
-// import React, { Component } from 'react'
+import React, { Component } from 'react'
 
 class UserLoggedinDashboardContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      colors: [],
+      user: [],
       currentBannerColor: "#FFFFFF"
     }
     this.onHeaderClick=this.onHeaderClick.bind(this)

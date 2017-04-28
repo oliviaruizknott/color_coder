@@ -203,11 +203,28 @@ h4 {
       margin: auto;
       margin-top: -10px;
       margin-bottom: 60px;
-
     }
   }
 }
 
+.actions4 {
+  margin: auto;
+  width: 700px;
+  margin: auto;
+  text-align: center;
+  font-size: 20px;
+  margin-top: 10px;
+  button {
+    text-align: center;
+    width: 150px;
+    height: 41px;
+    border-radius: 5px;
+    background-color: #aaaaaa;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 60px;
+  }
+}
 .form3 {
   width: 700px;
   margin: auto;

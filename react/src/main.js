@@ -2,7 +2,7 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import UserDashboardContainer from './containers/UserDashboardContainer'
-import ReviewsContainer from './containers/ReviewsContainer'
+import ReviewsContainer from './containers/ButtonExample'
 
 $(function() {
   if (document.getElementById('app')) {
@@ -14,10 +14,10 @@ $(function() {
 });
 
 $(function() {
-  if (document.getElementById("reviews")) {
+  if (document.getElementById('color')) {
     ReactDOM.render(
       <ReviewsContainer />,
-      document.getElementById('reviews')
+      document.getElementById('color')
     );
   }
 });
