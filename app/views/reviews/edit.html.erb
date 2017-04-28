@@ -21,5 +21,5 @@
 <% end %>
 
 <div class="edit">
-  <%= link_to 'Home', colors_path %> | <%= link_to "Delete Review", @review, method: :delete %>
+  <%= link_to 'Home', colors_path %> | <%= link_to "Delete Review", @review, method: :delete, data: { confirm: "Are you sure?" } %>
 </div>
