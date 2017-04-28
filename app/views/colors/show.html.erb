@@ -46,7 +46,7 @@
       <% end %>
       <% if current_user.admin? %>
         <div class="edit">
-          <%= link_to "Delete Review", review, method: :delete %>
+          <%= link_to "Delete Review", review, method: :delete, data: { confirm: "Are you sure?" } %>
         </div>
       <% end %>
     <% end %>
