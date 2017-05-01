@@ -45,7 +45,6 @@ group :development, :test do
   gem 'factory_girl'
   gem 'valid_attribute'
   gem 'pg_search'
-  gem 'carrierwave-aws'
   gem 'shoulda-matchers', require: false
 end
 
