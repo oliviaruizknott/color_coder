@@ -39,7 +39,7 @@ class UserDashboardContainer extends Component {
   }
 
   componentDidMount(){
-    fetch('http://localhost:3000/api/colors', {method: 'get'})
+    fetch('api/colors', {method: 'get'})
       .then(response => response.json())
       .then(body => {
         this.setState({ colors: body })
