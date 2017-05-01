@@ -19,7 +19,7 @@ feature "admin can delete a color" do
 
     first(:link, "Delete Color").click
 
-    expect(page).to_not have_content color2.hex_code
+    expect(page).to_not have_content color.hex_code
   end
 
   scenario "from the color show page" do

@@ -15,7 +15,7 @@
 <div id="app"></div>
 <% end %>
 
-<% @search_colors.each do |color| %>
+<% @colors.each do |color| %>
   <% if current_user == color.user %>
   <div class="boxes" style="background-color:<%= color.hex_code %>;">
     <h1><a style="color: <%= color.text_color(color.hex_code) %>;"
@@ -29,7 +29,7 @@
   <h4>All Colors</h4>
 </div>
 
-<% @search_colors.each do |color| %>
+<% @colors.each do |color| %>
     <div class="boxes" style="background-color:<%= color.hex_code %>;">
       <h1><a style="color: <%= color.text_color(color.hex_code) %>;"
    href="colors/<%= color.id %>"><%= color.hex_code %></a></h1>

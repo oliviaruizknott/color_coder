@@ -1,10 +1,5 @@
 class ColorsController < ApplicationController
   def index
-    if params[:query] == ''
-      @search_colors = Color.all
-    else
-      @search_colors = Color.search(params[:query]).order('created_at DESC')
-    end
     @colors = Color.all
     @rand_color = @colors.sample
     @text_color = text_color(@rand_color.hex_code)
@@ -18,7 +13,6 @@ class ColorsController < ApplicationController
 
   def show
     @color = Color.find(params[:id])
-    @search_colors = Color.search(params[:query])
     @review = Review.new
     @review_ratings = Review::RATINGS
     @text_color = text_color(@color.hex_code)
@@ -27,7 +21,6 @@ class ColorsController < ApplicationController
   def new
     @color = Color.new
     @colors = Color.all
-    @search_colors = Color.search(params[:query])
     @rand_color = @colors.sample
     @text_color = text_color(@rand_color.hex_code)
   end
